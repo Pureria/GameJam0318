@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ChangeGame.Input;
 using UnityEngine;
+using CorePackage;
+using State;
 
 namespace ChangeGame.Player
 {
@@ -10,12 +13,50 @@ namespace ChangeGame.Player
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
-        [Header("Player Info")]
+        [Header("Player Info")] 
+        [SerializeField] private PlayerInfoSO _infoSO;
+        [SerializeField] private InputSO _inputSO;
         [SerializeField] private Transform _checkGroundTran;
         [SerializeField] private float _checkGroundRadius;
         [SerializeField] private LayerMask _groundLayer;
 
+        [Header("Component")] 
+        [SerializeField] private Animator _anim;
+
+        private StateMachine _stateMachine;
+        #region State
+        public PlayerIdleState IdleState { get; private set; }
+        #endregion
+        
+        private Movement _movement;
+        
+        public Core _core {get; private set;}
+        public Movement Movement { get => _movement ?? _core.GetCoreComponent(ref _movement);}
+        
         public bool GroundCheck => CheckGround();
+
+        private void Awake()
+        {
+            _core = GetComponentInChildren<Core>();
+            if(_core == null) Debug.LogError("Coreが存在しません。");
+            _stateMachine = new StateMachine();
+            IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _anim, "idle");
+        }
+
+        private void Start()
+        {
+            _stateMachine.Initialize(IdleState);
+        }
+
+        private void Update()
+        {
+            _stateMachine.LogicUpdate();
+        }
+        
+        private void FixedUpdate()
+        {
+            _stateMachine.FixedUpdate();
+        }
         
         private void OnDrawGizmos()
         {
