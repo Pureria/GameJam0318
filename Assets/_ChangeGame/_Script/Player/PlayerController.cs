@@ -26,6 +26,7 @@ namespace ChangeGame.Player
         private StateMachine _stateMachine;
         #region State
         public PlayerIdleState IdleState { get; private set; }
+        public PlayerMoveState MoveState { get; private set; }
         #endregion
         
         private Movement _movement;
@@ -40,7 +41,8 @@ namespace ChangeGame.Player
             _core = GetComponentInChildren<Core>();
             if(_core == null) Debug.LogError("Coreが存在しません。");
             _stateMachine = new StateMachine();
-            IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _anim, "idle");
+            IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _stateMachine, _anim, "idle");
+            MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
         }
 
         private void Start()

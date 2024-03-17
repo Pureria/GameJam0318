@@ -12,7 +12,7 @@ namespace ChangeGame.Player
         protected PlayerInfoSO _infoSO;
         protected InputSO _inputSO;
         
-        public PlayerBaseState(PlayerController player, PlayerInfoSO infoSo, InputSO inputSo, Animator anim, string animName) : base(anim, animName)
+        public PlayerBaseState(PlayerController player, PlayerInfoSO infoSo, InputSO inputSo,StateMachine stateMachine, Animator anim, string animName) : base(stateMachine, anim, animName)
         {
             this._player = player;
             this._infoSO = infoSo;

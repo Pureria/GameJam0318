@@ -10,15 +10,17 @@ namespace State
         protected bool _endState;
         protected float _startTime;
         protected Animator _anim;
+        protected StateMachine _stateMachine;
 
         private string _animName;
 
         public bool EndState => _endState;
         
-        public BaseState(Animator anim, string animName)
+        public BaseState(StateMachine stateMachine, Animator anim, string animName)
         {
             _anim = anim;
             _animName = animName;
+            _stateMachine = stateMachine;
         }
         
         public virtual void Enter()

@@ -12,8 +12,9 @@ namespace ChangeGame.Input
         
         public void OnMoveInput(InputAction.CallbackContext context)
         {
-            Vector3 moveDirection = context.ReadValue<Vector3>();
-            _inputSO.MoveDirection = moveDirection;
+            Vector2 input = context.ReadValue<Vector2>();
+            Vector3 moveDirection = new Vector3(input.x, 0, input.y);
+            _inputSO.MoveInput = moveDirection;
         }
     }
 }

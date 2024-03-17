@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace ChangeGame.Player
 {
     [CreateAssetMenu(fileName = "PlayerInfoSO", menuName = "ChangeGame/Player/PlayerInfoSO")]
     public class PlayerInfoSO : ScriptableObject
     {
-        public float _moveSpeed = 5.0f;
+        [FormerlySerializedAs("_moveSpeed")] public float MoveSpeed = 5.0f;
     }
 }
