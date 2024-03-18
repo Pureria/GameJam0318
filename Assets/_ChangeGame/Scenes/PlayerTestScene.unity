@@ -1429,7 +1429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9541508, guid: 3886001691da2124688a8816d352423a, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9541508, guid: 3886001691da2124688a8816d352423a, type: 3}
       propertyPath: m_Controller
@@ -1442,6 +1442,7 @@ PrefabInstance:
     - {fileID: 11499014, guid: 3886001691da2124688a8816d352423a, type: 3}
     - {fileID: 11469548, guid: 3886001691da2124688a8816d352423a, type: 3}
     - {fileID: 11476210, guid: 3886001691da2124688a8816d352423a, type: 3}
+    - {fileID: 9541508, guid: 3886001691da2124688a8816d352423a, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1539,8 +1540,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14611822, y: 0.7662971, z: -0.18759744, w: 0.596863}
-  m_LocalPosition: {x: -2.908715, y: 2.5, z: 0.73442423}
+  m_LocalRotation: {x: 0.14617413, y: 0.7661193, z: -0.18755393, w: 0.59709126}
+  m_LocalPosition: {x: -2.9091518, y: 2.5, z: 0.73269117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2106,7 +2107,7 @@ Transform:
   m_GameObject: {fileID: 504175946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.908715, y: 2.5, z: 0.73442423}
+  m_LocalPosition: {x: -2.9091518, y: 2.5, z: 0.73269117}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2223,6 +2224,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &902586789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 902586790}
+  m_Layer: 0
+  m_Name: MagicPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &902586790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902586789}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1304962714}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &934597144
 GameObject:
@@ -2580,7 +2612,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178297233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1352662, y: 0.7695743, z: -0.17366482, w: 0.5994156}
+  m_LocalRotation: {x: 0.13531795, y: 0.7693957, z: -0.17362453, w: 0.5996448}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2659,7 +2691,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257732914}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14611821, y: 0.7662971, z: -0.18759742, w: 0.5968631}
+  m_LocalRotation: {x: 0.1461741, y: 0.76611924, z: -0.18755391, w: 0.59709126}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2737,6 +2769,7 @@ Transform:
   - {fileID: 305262495}
   - {fileID: 1283674351}
   - {fileID: 934597145}
+  - {fileID: 902586790}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &1304962715
@@ -2808,6 +2841,7 @@ MonoBehaviour:
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  _magicSpawnTran: {fileID: 902586790}
   _anim: {fileID: 1304962720}
 --- !u!114 &1304962718
 MonoBehaviour:
@@ -2887,6 +2921,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 078ba641-9865-41dd-9aa2-a8c9ce260af4
     m_ActionName: Game/Roll[/XInputControllerWindows/buttonEast,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1304962719}
+        m_TargetAssemblyTypeName: ChangeGame.Input.PlayerInput, Assembly-CSharp
+        m_MethodName: OnAttack2Input
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fe048f2a-e2e0-4d6a-9eff-3c6cebe893fa
+    m_ActionName: Game/Attack2[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -2998,7 +3048,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555675365}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15695068, y: 0.762758, z: -0.20150495, w: 0.59410644}
+  m_LocalRotation: {x: 0.1570107, y: 0.762581, z: -0.20145819, w: 0.59433365}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

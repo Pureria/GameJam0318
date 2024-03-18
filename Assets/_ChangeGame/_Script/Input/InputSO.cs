@@ -11,8 +11,10 @@ namespace ChangeGame.Input
         public Vector3 MoveInput;
         public bool Attack1Input;
         public bool RollInput;
+        public bool Attack2Input;
         
         public float Attack1InputTime;
+        public float Attack2InputTime;
         public float RollInputTime;
     }
 }

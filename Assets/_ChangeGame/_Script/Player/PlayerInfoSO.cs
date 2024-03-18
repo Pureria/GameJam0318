@@ -9,5 +9,8 @@ namespace ChangeGame.Player
     public class PlayerInfoSO : ScriptableObject
     {
         [FormerlySerializedAs("_moveSpeed")] public float MoveSpeed = 5.0f;
+
+        [Header("Magic Prefabs")] 
+        public GameObject Magic1Prefab;
     }
 }

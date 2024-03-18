@@ -33,6 +33,15 @@ namespace ChangeGame.Input
                 _inputSO.Attack1InputTime = Time.time;
             }
         }
+        
+        public void OnAttack2Input(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _inputSO.Attack2Input = true;
+                _inputSO.Attack2InputTime = Time.time;
+            }
+        }
 
         public void OnRollInput(InputAction.CallbackContext context)
         {
@@ -58,6 +67,15 @@ namespace ChangeGame.Input
             if (_inputSO.RollInputTime + _inputTime <= Time.time)
             {
                 _inputSO.RollInput = false;
+            }
+        }
+
+        private void CheckAttack2Input()
+        {
+            if (!_inputSO.Attack2Input) return;
+            if (_inputSO.Attack2InputTime + _inputTime <= Time.time)
+            {
+                _inputSO.Attack2Input = false;
             }
         }
     }

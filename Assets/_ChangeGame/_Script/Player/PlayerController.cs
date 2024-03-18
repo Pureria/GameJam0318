@@ -19,6 +19,7 @@ namespace ChangeGame.Player
         [SerializeField] private Transform _checkGroundTran;
         [SerializeField] private float _checkGroundRadius;
         [SerializeField] private LayerMask _groundLayer;
+        [SerializeField] private Transform _magicSpawnTran;
 
         [Header("Component")] 
         [SerializeField] private Animator _anim;
@@ -29,6 +30,7 @@ namespace ChangeGame.Player
         public PlayerMoveState MoveState { get; private set; }
         public PlayerNormalAttack NormalAttackState { get; private set; }
         public PlayerRollState RolLState { get; private set; }
+        public PlayerMagic1State Magic1State { get; private set; }
         #endregion
         
         private Movement _movement;
@@ -47,6 +49,7 @@ namespace ChangeGame.Player
             MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
             NormalAttackState = new PlayerNormalAttack(this, _infoSO, _inputSO, _stateMachine, _anim, "normalAttack");
             RolLState = new PlayerRollState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
+            Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
         }
 
         private void Start()
@@ -84,6 +87,18 @@ namespace ChangeGame.Player
         public void AnimationFinishTrigger()
         {
             _stateMachine.CurrentState.AnimationFinishTrigger();
+        }
+
+        public void InstantMagic(GameObject magicPrefab)
+        {
+            //魔法生成位置に魔法を生成
+            //GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, _magicSpawnTran.rotation);
+            
+            //魔法生成位置に魔法を生成して向きをプレイヤーが向いている方向にする
+            GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(transform.forward));
+            Vector3 eulerAngle = magic.transform.eulerAngles;
+            eulerAngle.z = magicPrefab.transform.eulerAngles.z;
+            magic.transform.eulerAngles = eulerAngle;
         }
     }
 }
