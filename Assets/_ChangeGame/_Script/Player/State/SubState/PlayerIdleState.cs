@@ -29,7 +29,12 @@ namespace ChangeGame.Player
             else if (_inputSO.Attack1Input)
             {
                 _inputSO.Attack1Input = false;
-                _stateMachine.ChangeState(_player.NormalAttack);
+                _stateMachine.ChangeState(_player.NormalAttackState);
+            }
+            else if (_inputSO.RollInput)
+            {
+                _inputSO.RollInput = false;
+                _stateMachine.ChangeState(_player.RolLState);
             }
         }
     }

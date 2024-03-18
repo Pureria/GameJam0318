@@ -15,6 +15,7 @@ namespace ChangeGame.Input
         private void Update()
         {
             CheckAttack1Input();
+            CheckRollInput();
         }
 
         public void OnMoveInput(InputAction.CallbackContext context)
@@ -29,7 +30,16 @@ namespace ChangeGame.Input
             if (context.started)
             {
                 _inputSO.Attack1Input = true;
-                _inputSO.Attack1InputTime = _inputTime;
+                _inputSO.Attack1InputTime = Time.time;
+            }
+        }
+
+        public void OnRollInput(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _inputSO.RollInput = true;
+                _inputSO.RollInputTime = Time.time;
             }
         }
 
@@ -39,6 +49,15 @@ namespace ChangeGame.Input
             if (_inputSO.Attack1InputTime + _inputTime <= Time.time)
             {
                 _inputSO.Attack1Input = false;
+            }
+        }
+
+        private void CheckRollInput()
+        {
+            if (!_inputSO.RollInput) return;
+            if (_inputSO.RollInputTime + _inputTime <= Time.time)
+            {
+                _inputSO.RollInput = false;
             }
         }
     }

@@ -27,7 +27,8 @@ namespace ChangeGame.Player
         #region State
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
-        public PlayerNormalAttack NormalAttack { get; private set; }
+        public PlayerNormalAttack NormalAttackState { get; private set; }
+        public PlayerRollState RolLState { get; private set; }
         #endregion
         
         private Movement _movement;
@@ -44,7 +45,8 @@ namespace ChangeGame.Player
             _stateMachine = new StateMachine();
             IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _stateMachine, _anim, "idle");
             MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
-            NormalAttack = new PlayerNormalAttack(this, _infoSO, _inputSO, _stateMachine, _anim, "normalAttack");
+            NormalAttackState = new PlayerNormalAttack(this, _infoSO, _inputSO, _stateMachine, _anim, "normalAttack");
+            RolLState = new PlayerRollState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
         }
 
         private void Start()

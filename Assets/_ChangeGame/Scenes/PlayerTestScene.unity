@@ -287,8 +287,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21157804, y: 0.44331023, z: -0.10852693, w: 0.8642527}
-  m_LocalPosition: {x: -2.4365637, y: 2.5, z: -1.7501879}
+  m_LocalRotation: {x: 0.14422193, y: 0.772268, z: -0.18905921, w: 0.58911693}
+  m_LocalPosition: {x: -2.8933358, y: 2.5, z: 0.7928474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -854,7 +854,7 @@ Transform:
   m_GameObject: {fileID: 504175946}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.4365637, y: 2.5, z: -1.7501879}
+  m_LocalPosition: {x: -2.8933358, y: 2.5, z: 0.7928474}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1328,7 +1328,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178297233}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1958644, y: 0.4452061, z: -0.10046678, w: 0.86794883}
+  m_LocalRotation: {x: 0.13351074, y: 0.77557063, z: -0.175018, w: 0.5916365}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1407,7 +1407,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1257732914}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21157801, y: 0.4433102, z: -0.10852692, w: 0.86425275}
+  m_LocalRotation: {x: 0.14422195, y: 0.772268, z: -0.18905918, w: 0.589117}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1619,6 +1619,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 474b2706-fd9a-43a2-828b-961428eb34d6
     m_ActionName: Game/Camera[/XInputControllerWindows/rightStick]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1304962719}
+        m_TargetAssemblyTypeName: ChangeGame.Input.PlayerInput, Assembly-CSharp
+        m_MethodName: OnRollInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 078ba641-9865-41dd-9aa2-a8c9ce260af4
+    m_ActionName: Game/Roll[/XInputControllerWindows/buttonEast,/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -1730,7 +1746,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555675365}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.22726332, y: 0.44126284, z: -0.11657257, w: 0.8602612}
+  m_LocalRotation: {x: 0.15491381, y: 0.7687014, z: -0.2030751, w: 0.5863962}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -10,7 +10,9 @@ namespace ChangeGame.Input
     {
         public Vector3 MoveInput;
         public bool Attack1Input;
+        public bool RollInput;
         
         public float Attack1InputTime;
+        public float RollInputTime;
     }
 }
