@@ -26,6 +26,11 @@ namespace ChangeGame.Player
             {
                 _stateMachine.ChangeState(_player.MoveState);
             }
+            else if (_inputSO.Attack1Input)
+            {
+                _inputSO.Attack1Input = false;
+                _stateMachine.ChangeState(_player.NormalAttack);
+            }
         }
     }
 }

@@ -20,6 +20,11 @@ namespace ChangeGame.Player
             {
                 _stateMachine.ChangeState(_player.IdleState);
             }
+            else if (_inputSO.Attack1Input)
+            {
+                _inputSO.Attack1Input = false;
+                _stateMachine.ChangeState(_player.NormalAttack);
+            }
         }
 
         public override void FixedUpdate()

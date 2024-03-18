@@ -8,6 +8,9 @@ namespace ChangeGame.Input
     [CreateAssetMenu(fileName = "InputSO", menuName = "ChangeGame/Input/InputSO")]
     public class InputSO : ScriptableObject
     {
-        [FormerlySerializedAs("MoveDirection")] public Vector3 MoveInput;
+        public Vector3 MoveInput;
+        public bool Attack1Input;
+        
+        public float Attack1InputTime;
     }
 }

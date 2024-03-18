@@ -27,6 +27,7 @@ namespace ChangeGame.Player
         #region State
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
+        public PlayerNormalAttack NormalAttack { get; private set; }
         #endregion
         
         private Movement _movement;
@@ -43,6 +44,7 @@ namespace ChangeGame.Player
             _stateMachine = new StateMachine();
             IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _stateMachine, _anim, "idle");
             MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
+            NormalAttack = new PlayerNormalAttack(this, _infoSO, _inputSO, _stateMachine, _anim, "normalAttack");
         }
 
         private void Start()
@@ -75,6 +77,11 @@ namespace ChangeGame.Player
         {
             // 地面チェック
             return Physics.CheckSphere(_checkGroundTran.position, _checkGroundRadius, _groundLayer);
+        }
+
+        public void AnimationFinishTrigger()
+        {
+            _stateMachine.CurrentState.AnimationFinishTrigger();
         }
     }
 }
