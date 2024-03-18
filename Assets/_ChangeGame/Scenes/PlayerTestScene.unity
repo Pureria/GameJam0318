@@ -732,6 +732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 504175948}
   - component: {fileID: 504175947}
+  - component: {fileID: 504175949}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -862,6 +863,22 @@ Transform:
   - {fileID: 1178297235}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &504175949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504175946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerIndex: -1
+  AutoEnableInputs: 1
+  XYAxis: {fileID: -3892644826893490824, guid: 44e02f9b143cb0141bf7d37cab676beb, type: 3}
+  ZAxis: {fileID: 0}
 --- !u!1 &519558860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,6 +1615,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 446ec4b2-5f35-4613-979b-21aaadf6b4f5
     m_ActionName: Game/Attack1[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 474b2706-fd9a-43a2-828b-961428eb34d6
+    m_ActionName: Game/Camera[/XInputControllerWindows/rightStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -1709,7 +1730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1555675365}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2272633, y: 0.4412628, z: -0.116572544, w: 0.8602612}
+  m_LocalRotation: {x: 0.22726332, y: 0.44126284, z: -0.11657257, w: 0.8602612}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
