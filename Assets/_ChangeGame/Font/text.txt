@@ -1,1 +1,3 @@
-テキスト用のフォルダ
+version https://git-lfs.github.com/spec/v1
+oid sha256:6e23f99920ecb36dfe1f9e85ac4ed3b34ec38f8ed8a3b9a1ceea63992f840abc
+size 30
