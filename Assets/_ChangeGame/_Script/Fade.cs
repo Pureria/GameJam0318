@@ -74,6 +74,10 @@ public class Fade : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 呼ぶとフェード処理が始まる
+    /// </summary>
+    /// <param name="listener">フェード処理が終わった後に呼び出したい関数</param>
     public void FadeStart(UnityAction listener)
     {
         if (_bFade) return;
