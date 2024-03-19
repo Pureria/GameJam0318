@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3d0d0027b880642b24c4acd527f678, type: 3}
   m_Name: PlayerInfoSO
   m_EditorClassIdentifier: 
+  MaxHealth: 100
   MoveSpeed: 5
-  Magic1Prefab: {fileID: 2565746321770046771, guid: 9b60f2652e93e334089f8b9ced3e660c,
+  Magic1Prefab: {fileID: 6432875725016878281, guid: 9fd0e66abf3a583478f10c5a006e6a13,
     type: 3}
