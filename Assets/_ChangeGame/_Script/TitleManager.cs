@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class TitleManager : MonoBehaviour
     private void _TitleStart()
     {
         _bStart = true;
+    }
+
+    public void TransitionButton()
+    {
+        Debug.Log("‘JˆÚ‚Å‚«‚½‚æI");
+        SceneManager.LoadScene("TitleTransitionTestScene");
     }
 
 }
