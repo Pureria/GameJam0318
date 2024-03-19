@@ -1165,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fade: {fileID: 370429446}
+  _nextSceneName: TitleTransitionTestScene
 --- !u!1 &1974100539
 GameObject:
   m_ObjectHideFlags: 0
