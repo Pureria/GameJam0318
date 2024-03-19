@@ -3115,6 +3115,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fe048f2a-e2e0-4d6a-9eff-3c6cebe893fa
     m_ActionName: Game/Attack2[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1304962719}
+        m_TargetAssemblyTypeName: ChangeGame.Input.PlayerInput, Assembly-CSharp
+        m_MethodName: OnAttack3Input
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3215daaa-d1e2-4c95-8d6d-f2ac5846348d
+    m_ActionName: Game/Attack3[/XInputControllerWindows/buttonNorth,/Keyboard/1]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game

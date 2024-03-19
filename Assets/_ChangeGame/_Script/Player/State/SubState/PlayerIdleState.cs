@@ -41,6 +41,11 @@ namespace ChangeGame.Player
                 _inputSO.Attack2Input = false;
                 _stateMachine.ChangeState(_player.Magic1State);
             }
+            else if (_inputSO.Attack3Input)
+            {
+                _inputSO.Attack3Input = false;
+                _stateMachine.ChangeState(_player.Magic2State);
+            }
         }
     }
 }

@@ -13,5 +13,7 @@ namespace ChangeGame.Player
 
         [Header("Magic Prefabs")] 
         public GameObject Magic1Prefab;
+
+        public GameObject Magic2Prefab;
     }
 }
