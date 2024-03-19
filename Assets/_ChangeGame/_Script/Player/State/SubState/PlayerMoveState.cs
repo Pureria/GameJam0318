@@ -35,6 +35,11 @@ namespace ChangeGame.Player
                 _inputSO.Attack2Input = false;
                 _stateMachine.ChangeState(_player.Magic1State);
             }
+            else if (_inputSO.Attack3Input)
+            {
+                _inputSO.Attack3Input = false;
+                _stateMachine.ChangeState(_player.Magic2State);
+            }
         }
 
         public override void FixedUpdate()
@@ -46,7 +51,7 @@ namespace ChangeGame.Player
             //カメラの位置を計算して移動
             Vector3 cameraForward = Vector3.Scale(UnityEngine.Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
             Vector3 moveForward = cameraForward * _inputSO.MoveInput.z + UnityEngine.Camera.main.transform.right * _inputSO.MoveInput.x;
-            _player.Movement.Move(moveForward, _infoSO.MoveSpeed);
+            _player.MovementComp.Move(moveForward, _infoSO.MoveSpeed);
         }
     }
 }

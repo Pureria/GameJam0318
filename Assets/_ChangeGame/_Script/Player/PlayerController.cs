@@ -31,14 +31,21 @@ namespace ChangeGame.Player
         public PlayerNormalAttack NormalAttackState { get; private set; }
         public PlayerRollState RolLState { get; private set; }
         public PlayerMagic1State Magic1State { get; private set; }
+        public PlayerMagic2State Magic2State { get; private set; }
         #endregion
         
-        private Movement _movement;
+        private Movement _movementComp;
+        private States _statesComp;
+        private Damage _damasgeComp;
         
         public Core _core {get; private set;}
-        public Movement Movement { get => _movement ?? _core.GetCoreComponent(ref _movement);}
+        public Movement MovementComp { get => _movementComp ?? _core.GetCoreComponent(ref _movementComp);}
+        public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp);}
+        public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp);}
         
         public bool GroundCheck => CheckGround();
+
+        public Action OnDeadEvent;
 
         private void Awake()
         {
@@ -50,11 +57,25 @@ namespace ChangeGame.Player
             NormalAttackState = new PlayerNormalAttack(this, _infoSO, _inputSO, _stateMachine, _anim, "normalAttack");
             RolLState = new PlayerRollState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
             Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
+            Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
         }
 
         private void Start()
         {
             _stateMachine.Initialize(IdleState);
+            _statesComp.Initialize(_infoSO.MaxHealth);
+        }
+
+        private void OnEnable()
+        {
+            StatesComp.OnDeadEvent += Dead;
+            DamageComp.OnDamageEvent += Damage;
+        }
+
+        private void OnDisable()
+        {
+            StatesComp.OnDeadEvent -= Dead;
+            DamageComp.OnDamageEvent -= Damage;
         }
 
         private void Update()
@@ -89,16 +110,26 @@ namespace ChangeGame.Player
             _stateMachine.CurrentState.AnimationFinishTrigger();
         }
 
-        public void InstantMagic(GameObject magicPrefab)
+        public void InstantMagic(GameObject magicPrefab, Vector3 dir)
         {
             //魔法生成位置に魔法を生成
             //GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, _magicSpawnTran.rotation);
             
             //魔法生成位置に魔法を生成して向きをプレイヤーが向いている方向にする
-            GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(transform.forward));
+            GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(dir));
             Vector3 eulerAngle = magic.transform.eulerAngles;
             eulerAngle.z = magicPrefab.transform.eulerAngles.z;
             magic.transform.eulerAngles = eulerAngle;
+        }
+
+        private void Dead()
+        {
+            OnDeadEvent?.Invoke();
+        }
+
+        private void Damage()
+        {
+            
         }
     }
 }
