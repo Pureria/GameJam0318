@@ -20,7 +20,7 @@ namespace ChangeGame.Player
             
             cameraForward = Vector3.Scale(UnityEngine.Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
             
-            _player.Movement.Stop();
+            _player.MovementComp.Stop();
             _player.InstantMagic(_infoSO.Magic1Prefab,cameraForward);
         }
 

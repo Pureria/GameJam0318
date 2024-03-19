@@ -33,12 +33,18 @@ namespace ChangeGame.Player
         public PlayerMagic1State Magic1State { get; private set; }
         #endregion
         
-        private Movement _movement;
+        private Movement _movementComp;
+        private States _statesComp;
+        private Damage _damasgeComp;
         
         public Core _core {get; private set;}
-        public Movement Movement { get => _movement ?? _core.GetCoreComponent(ref _movement);}
+        public Movement MovementComp { get => _movementComp ?? _core.GetCoreComponent(ref _movementComp);}
+        public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp);}
+        public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp);}
         
         public bool GroundCheck => CheckGround();
+
+        public Action OnDeadEvent;
 
         private void Awake()
         {
@@ -55,6 +61,19 @@ namespace ChangeGame.Player
         private void Start()
         {
             _stateMachine.Initialize(IdleState);
+            _statesComp.Initialize(_infoSO.MaxHealth);
+        }
+
+        private void OnEnable()
+        {
+            _statesComp.OnDeadEvent += Dead;
+            _damasgeComp.OnDamageEvent += Damage;
+        }
+
+        private void OnDisable()
+        {
+            _statesComp.OnDeadEvent -= Dead;
+            _damasgeComp.OnDamageEvent -= Damage;
         }
 
         private void Update()
@@ -99,6 +118,16 @@ namespace ChangeGame.Player
             Vector3 eulerAngle = magic.transform.eulerAngles;
             eulerAngle.z = magicPrefab.transform.eulerAngles.z;
             magic.transform.eulerAngles = eulerAngle;
+        }
+
+        private void Dead()
+        {
+            OnDeadEvent?.Invoke();
+        }
+
+        private void Damage()
+        {
+            
         }
     }
 }

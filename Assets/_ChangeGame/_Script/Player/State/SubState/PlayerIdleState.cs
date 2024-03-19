@@ -15,7 +15,7 @@ namespace ChangeGame.Player
         public override void Enter()
         {
             base.Enter();
-            _player.Movement.Stop();
+            _player.MovementComp.Stop();
         }
 
         public override void LogicUpdate()

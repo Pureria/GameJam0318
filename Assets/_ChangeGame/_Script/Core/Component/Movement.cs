@@ -50,5 +50,15 @@ namespace CorePackage
             velo.y = jumpPower;
             _myRB.velocity = velo;
         }
+
+        public void AddVelocity(Vector3 addVelo)
+        {
+            _myRB.velocity += addVelo;
+        }
+        
+        public void SetVelocity(Vector3 setVelo)
+        {
+            _myRB.velocity = setVelo;
+        }
     }
 }
