@@ -15,23 +15,18 @@ namespace ChangeGame.Magic
         [Header("Check Info")]
         [SerializeField] private float _checkRadius = 0.5f;
         [SerializeField] private Transform _checkTransform;
-        
-        /*
-        private void OnTriggerEnter(Collider other)
+
+        [SerializeField] private bool _isNowAttack;
+
+        private void Start()
         {
-            if (other.tag == "Player") return;
-
-            Core tCore = other.gameObject.GetComponentInChildren<Core>();
-            if(tCore == null) return;
-            if (tCore.GetCoreComponentBool(out Damage damage))
-            {
-                damage.AddDamage(_damageAmount);
-            }
+            _isNowAttack = false;
         }
-        */
-
+        
         private void FixedUpdate()
         {
+            if (!_isNowAttack) return;
+            
             Collider[] hitColliders = Physics.OverlapSphere(_checkTransform.position, _checkRadius);
             foreach (var hitCollider in hitColliders)
             {
@@ -65,6 +60,11 @@ namespace ChangeGame.Magic
         private void OnDisable()
         {
             _playableDirector.stopped -= EndTimeline;
+        }
+        
+        public void SetIsAttack(bool isAttack)
+        {
+            _isNowAttack = isAttack;
         }
     }
 }
