@@ -15,6 +15,7 @@ namespace ChangeGame.Input
         private void Update()
         {
             CheckAttack1Input();
+            CheckAttack2Input();
             CheckRollInput();
         }
 

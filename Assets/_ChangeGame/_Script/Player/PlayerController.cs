@@ -89,13 +89,13 @@ namespace ChangeGame.Player
             _stateMachine.CurrentState.AnimationFinishTrigger();
         }
 
-        public void InstantMagic(GameObject magicPrefab)
+        public void InstantMagic(GameObject magicPrefab, Vector3 dir)
         {
             //魔法生成位置に魔法を生成
             //GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, _magicSpawnTran.rotation);
             
             //魔法生成位置に魔法を生成して向きをプレイヤーが向いている方向にする
-            GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(transform.forward));
+            GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(dir));
             Vector3 eulerAngle = magic.transform.eulerAngles;
             eulerAngle.z = magicPrefab.transform.eulerAngles.z;
             magic.transform.eulerAngles = eulerAngle;
