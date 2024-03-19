@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks.Triggers;
 using UnityEngine;
 
 namespace CorePackage
@@ -15,8 +16,8 @@ namespace CorePackage
         {
             _core.GetCoreComponent(ref _states);
             _core.GetCoreComponent(ref _movement);
-            if(_states == null) Debug.LogWarning("StatesがCoreに存在しません。");
-            if(_movement == null) Debug.LogWarning("MovementがCoreに存在しません。");
+            //if(_states == null) Debug.LogWarning("StatesがCoreに存在しません。");
+            //if(_movement == null) Debug.LogWarning("MovementがCoreに存在しません。");
         }
 
         /// <summary>
@@ -25,6 +26,9 @@ namespace CorePackage
         /// <param name="damageAmount">ダメージ量</param>
         public void AddDamage(float damageAmount)
         {
+            //オブジェクトの名前とダメージ数をDebug.Logで表示
+            Debug.Log($"{this.transform.root.name}に{damageAmount}ダメージ");
+            
             _states.SubHealth(damageAmount);
             OnDamageEvent?.Invoke();
         }

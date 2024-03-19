@@ -66,14 +66,14 @@ namespace ChangeGame.Player
 
         private void OnEnable()
         {
-            _statesComp.OnDeadEvent += Dead;
-            _damasgeComp.OnDamageEvent += Damage;
+            StatesComp.OnDeadEvent += Dead;
+            DamageComp.OnDamageEvent += Damage;
         }
 
         private void OnDisable()
         {
-            _statesComp.OnDeadEvent -= Dead;
-            _damasgeComp.OnDamageEvent -= Damage;
+            StatesComp.OnDeadEvent -= Dead;
+            DamageComp.OnDamageEvent -= Damage;
         }
 
         private void Update()
