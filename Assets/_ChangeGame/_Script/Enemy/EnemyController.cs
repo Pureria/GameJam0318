@@ -45,6 +45,7 @@ namespace ChangeGame.Enemy
         {
             _stateMachine.LogicUpdate();
             
+            _agent.destination = _goal.position;
         }
 
         private void FixedUpdate()
@@ -93,6 +94,16 @@ namespace ChangeGame.Enemy
             }
         }
 
+        public void AnimationFinishTrigger()
+        {
+            _stateMachine.CurrentState.AnimationFinishTrigger();
+        }
+
+        public void AnimationFirstTrigger()
+        {
+            _stateMachine.CurrentState.AnimationFirstTrigger();
+        }
+        
         private void OnDrawGizmos()
         {
             //‰~‚ð•`‰æ

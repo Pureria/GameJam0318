@@ -7,7 +7,7 @@ namespace ChangeGame.Enemy
 {
     public class EnemyIdleState : EnemyBaseState
     {
-        private float _bootUpTime = 1f;  //ƒXƒ|[ƒ“‚µ‚Ä‚©‚çWalkState‚É‘JˆÚ‚·‚é‚Ü‚Å‚ÌŠÔ
+        private float _bootUpTime = 1f;  //ã‚¹ãƒãƒ¼ãƒ³ã—ã¦ã‹ã‚‰WalkStateã«é·ç§»ã™ã‚‹ã¾ã§ã®æ™‚é–“
 
         public EnemyIdleState(EnemyController controller, StateMachine stateMachine, Animator anim, string animName) : base(controller, stateMachine, anim, animName)
         {

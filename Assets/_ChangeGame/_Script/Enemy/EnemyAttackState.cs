@@ -16,19 +16,34 @@ namespace ChangeGame.Enemy
         public override void Enter()
         {
             base.Enter();
-            _enemyController.Attack(damageAmount);
-            Debug.Log("Enemy‚ªUŒ‚‚µ‚½");
+            
+            _enemyController.Stop();
         }
 
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            
+            /*
             if (_startTime + 1f < Time.time)
             {
                 _stateMachine.ChangeState(_enemyController.IdleState);
             }
-        }
+            */
 
+            if (_animationFinished)
+            {
+                _stateMachine.ChangeState(_enemyController.IdleState);
+            }
+        }
+        
+        public override void AnimationFirstTrigger()
+        {
+            base.AnimationFirstTrigger();
+            
+            _enemyController.Attack(damageAmount);
+            Debug.Log("Enemy‚ªUŒ‚‚µ‚½");
+        }
     }
 
 }
