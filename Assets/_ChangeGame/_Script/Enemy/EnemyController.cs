@@ -11,6 +11,7 @@ namespace ChangeGame.Enemy
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _goal;
+        [SerializeField] private float _bootUpTime;
 
         private StateMachine _stateMachine;
         private NavMeshAgent _agent;
@@ -23,7 +24,7 @@ namespace ChangeGame.Enemy
             _stateMachine = new StateMachine();
             IdleState = new EnemyIdleState(this, _stateMachine, _animator, "Idle"); //ここでController引数として渡している
             WalkState = new EnemyWalkState(this, _stateMachine, _animator, "Walk");
-        
+            
         }
 
         private void Start()
@@ -52,12 +53,7 @@ namespace ChangeGame.Enemy
         }
 
         public void Stop()
-        {
-            /*
-            _agent.velocity = Vector3.zero;
-            _agent.Stop(true);
-            */
-        
+        {        
             //_agentの移動をストップしたい
             _agent.isStopped = true;
         }

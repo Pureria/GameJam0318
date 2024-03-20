@@ -7,6 +7,8 @@ namespace ChangeGame.Enemy
 {
     public class EnemyIdleState : EnemyBaseState
     {
+        private float _bootUpTime = 1f;  //ƒXƒ|[ƒ“‚µ‚Ä‚©‚çWalkState‚É‘JˆÚ‚·‚é‚Ü‚Å‚ÌŠÔ
+
         public EnemyIdleState(EnemyController controller, StateMachine stateMachine, Animator anim, string animName) : base(controller, stateMachine, anim, animName)
         {
         }
@@ -21,7 +23,7 @@ namespace ChangeGame.Enemy
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (_startTime + 1f < Time.time)
+            if (_startTime + _bootUpTime < Time.time)
             {
                 _stateMachine.ChangeState(_enemyController.WalkState);
             }
