@@ -11,12 +11,12 @@ namespace ChangeGame.Enemy
     {
         [SerializeField] private Animator _animator;
         [SerializeField] private Transform _goal;
-        [SerializeField] private float _bootUpTime;
 
         private StateMachine _stateMachine;
         private NavMeshAgent _agent;
         public EnemyIdleState IdleState { get; private set; }
         public EnemyWalkState WalkState { get; private set; }
+        public EnemyAttackState AttackState { get; private set; }
         
 
         private void Awake()
@@ -24,6 +24,8 @@ namespace ChangeGame.Enemy
             _stateMachine = new StateMachine();
             IdleState = new EnemyIdleState(this, _stateMachine, _animator, "Idle"); //Ç±Ç±Ç≈Controllerà¯êîÇ∆ÇµÇƒìnÇµÇƒÇ¢ÇÈ
             WalkState = new EnemyWalkState(this, _stateMachine, _animator, "Walk");
+            AttackState = new EnemyAttackState(this, _stateMachine, _animator, "Attack");
+            
             
         }
 
@@ -58,6 +60,14 @@ namespace ChangeGame.Enemy
             _agent.isStopped = true;
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.name == "Player")
+            {
+                _stateMachine.ChangeState(AttackState);
+
+            }
+        }
     }
 
 }

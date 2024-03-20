@@ -14,6 +14,7 @@ namespace ChangeGame.Enemy
         public override void LogicUpdate()
         {
             base.LogicUpdate();
+            Debug.Log("Enemy‚ªUŒ‚‚µ‚½");
         }
     }
 
