@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Laser",
+                    "type": "Button",
+                    "id": "1b1eb3f0-6eeb-4b03-b798-5a0ea6bb2e54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -234,6 +243,28 @@
                     "processors": "",
                     "groups": "Keyboard & Mouse",
                     "action": "Attack3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6e9ae469-3248-4fdd-86a7-cfd48ca2b5bb",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Laser",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "89143770-2bc4-4114-926e-09d17fa94282",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Laser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
