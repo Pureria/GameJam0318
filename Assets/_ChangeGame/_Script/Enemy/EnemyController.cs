@@ -47,14 +47,19 @@ namespace ChangeGame.Enemy
 
         public void Walk()
         {
-            _agent.Stop(false);
+            _agent.isStopped = false;
             Debug.Log("歩いています");
         }
 
         public void Stop()
         {
+            /*
             _agent.velocity = Vector3.zero;
             _agent.Stop(true);
+            */
+        
+            //_agentの移動をストップしたい
+            _agent.isStopped = true;
         }
 
     }
