@@ -7,11 +7,11 @@ namespace ChangeGame.Enemy
 {
     public class EnemyBaseState : BaseState
     {
-        protected EnemyController _enemy;
+        protected EnemyController _enemyController;
 
         public EnemyBaseState(EnemyController controller, StateMachine stateMachine, Animator anim, string animName) : base(stateMachine, anim, animName)
         {
-            this._enemy = controller;
+            this._enemyController = controller;
         }
     }
 

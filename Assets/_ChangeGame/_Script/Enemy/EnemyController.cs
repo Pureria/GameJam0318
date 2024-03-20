@@ -12,12 +12,15 @@ namespace ChangeGame.Enemy
 
         private StateMachine _stateMachine;
         public EnemyIdleState IdleState { get; private set; }
+        public EnemyWalkState WalkState { get; private set; }
         
 
         private void Awake()
         {
             _stateMachine = new StateMachine();
-            IdleState = new EnemyIdleState(this, _stateMachine, _animator, "idle");
+            IdleState = new EnemyIdleState(this, _stateMachine, _animator, "Idle"); //‚±‚±‚ÅControllerˆø”‚Æ‚µ‚Ä“n‚µ‚Ä‚¢‚é
+            WalkState = new EnemyWalkState(this, _stateMachine, _animator, "Walk");
+        
         }
 
         private void Start()
@@ -34,6 +37,11 @@ namespace ChangeGame.Enemy
         private void FixedUpdate()
         {
             _stateMachine.FixedUpdate();
+        }
+
+        public void Walk()
+        {
+            Debug.Log("•à‚¢‚Ä‚¢‚Ü‚·");
         }
 
     }

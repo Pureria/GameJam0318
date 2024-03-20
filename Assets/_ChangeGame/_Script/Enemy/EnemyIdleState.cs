@@ -14,7 +14,18 @@ namespace ChangeGame.Enemy
         public override void Enter()
         {
             base.Enter();
+
         }
+
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+            if (_startTime + 1f < Time.time)
+            {
+                _stateMachine.ChangeState(_enemyController.WalkState);
+            }
+        }
+
     }
 
 }
