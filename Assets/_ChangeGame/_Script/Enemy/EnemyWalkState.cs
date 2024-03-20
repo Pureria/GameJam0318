@@ -17,6 +17,15 @@ namespace ChangeGame.Enemy
             _enemyController.Walk();
         }
 
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+            if (_enemyController.CanAttackPlayer())
+            {
+                _stateMachine.ChangeState(_enemyController.AttackState);
+            }
+        }
+
     }
 
 }

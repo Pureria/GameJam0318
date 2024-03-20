@@ -23,10 +23,14 @@ namespace ChangeGame.Enemy
         public override void LogicUpdate()
         {
             base.LogicUpdate();
-            if (_startTime + _bootUpTime < Time.time)
+            if (_enemyController.CanAttackPlayer())
+            {
+                _stateMachine.ChangeState(_enemyController.AttackState);
+            }
+            else if (_startTime + _bootUpTime < Time.time)
             {
                 _stateMachine.ChangeState(_enemyController.WalkState);
-            }
+            }  
         }
 
     }
