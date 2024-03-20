@@ -15,13 +15,20 @@ namespace ChangeGame.Enemy
         [SerializeField] private Transform _goal;
         [SerializeField] private Transform _checkAttackPosition;
         [SerializeField] private float _checkAttackRadius;
+        [SerializeField] private float MaxHP;
 
         private State.StateMachine _stateMachine;
         private NavMeshAgent _agent;
+        private States _statesComp;
+        private Damage _damasgeComp;
+
+
         public EnemyIdleState IdleState { get; private set; }
         public EnemyWalkState WalkState { get; private set; }
         public EnemyAttackState AttackState { get; private set; }
-        
+        public Core _core { get; private set; }
+        public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp); }
+        public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp); }
 
         private void Awake()
         {
@@ -29,16 +36,29 @@ namespace ChangeGame.Enemy
             IdleState = new EnemyIdleState(this, _stateMachine, _animator, "Idle"); //Ç±Ç±Ç≈Controllerà¯êîÇ∆ÇµÇƒìnÇµÇƒÇ¢ÇÈ
             WalkState = new EnemyWalkState(this, _stateMachine, _animator, "Walk");
             AttackState = new EnemyAttackState(this, _stateMachine, _animator, "Attack");
-            
+            _core = GetComponentInChildren<Core>();
             
         }
 
         private void Start()
         {
-
             _agent = GetComponent<NavMeshAgent>();
             _agent.destination = _goal.position;
             _stateMachine.Initialize(IdleState);
+            StatesComp.Initialize(MaxHP);
+
+        }
+
+        private void OnEnable()
+        {
+            DamageComp.OnDamageEvent += Wince;
+            StatesComp.OnDeadEvent += Dead;
+        }
+
+        private void OnDisable()
+        {
+            DamageComp.OnDamageEvent -= Wince;
+            StatesComp.OnDeadEvent -= Dead;
         }
 
         private void Update()
@@ -109,6 +129,16 @@ namespace ChangeGame.Enemy
             //â~Çï`âÊ
             Gizmos.color = new Color(255, 0, 0, 0.5f);
             Gizmos.DrawSphere(_checkAttackPosition.position, _checkAttackRadius);
+        }
+
+        private void Dead()
+        {
+
+        }
+
+        private void Wince()
+        {
+
         }
 
     }
