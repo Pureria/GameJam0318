@@ -64,6 +64,7 @@ namespace ChangeGame.Enemy
         {
             if (other.gameObject.name == "Player")
             {
+                Stop();
                 _stateMachine.ChangeState(AttackState);
 
             }
