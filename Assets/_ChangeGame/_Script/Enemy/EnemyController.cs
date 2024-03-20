@@ -3,14 +3,17 @@ using State;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace ChangeGame.Enemy
 {
     public class EnemyController : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
+        [SerializeField] private Transform _goal;
 
         private StateMachine _stateMachine;
+        private NavMeshAgent _agent;
         public EnemyIdleState IdleState { get; private set; }
         public EnemyWalkState WalkState { get; private set; }
         
@@ -25,6 +28,9 @@ namespace ChangeGame.Enemy
 
         private void Start()
         {
+
+            _agent = GetComponent<NavMeshAgent>();
+            _agent.destination = _goal.position;
             _stateMachine.Initialize(IdleState);
         }
 
@@ -41,7 +47,14 @@ namespace ChangeGame.Enemy
 
         public void Walk()
         {
+            _agent.Stop(false);
             Debug.Log("•à‚¢‚Ä‚¢‚Ü‚·");
+        }
+
+        public void Stop()
+        {
+            _agent.velocity = Vector3.zero;
+            _agent.Stop(true);
         }
 
     }

@@ -14,6 +14,7 @@ namespace ChangeGame.Enemy
         public override void Enter()
         {
             base.Enter();
+            _enemyController.Stop();
 
         }
 
