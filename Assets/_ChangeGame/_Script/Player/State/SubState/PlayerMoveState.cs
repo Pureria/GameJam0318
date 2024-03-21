@@ -11,7 +11,7 @@ namespace ChangeGame.Player
         public PlayerMoveState(PlayerController player, PlayerInfoSO infoSo, InputSO inputSo,StateMachine stateMachine, Animator anim, string animName) : base(player, infoSo, inputSo, stateMachine,anim, animName)
         {
         }
-
+        
         public override void LogicUpdate()
         {
             base.LogicUpdate();
@@ -48,8 +48,6 @@ namespace ChangeGame.Player
         public override void FixedUpdate()
         {
             base.FixedUpdate();
-            
-            //_player.Movement.Move(_inputSO.MoveDirection, _infoSO._moveSpeed);
             
             //カメラの位置を計算して移動
             Vector3 cameraForward = Vector3.Scale(UnityEngine.Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;

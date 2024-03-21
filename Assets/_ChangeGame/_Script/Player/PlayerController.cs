@@ -30,7 +30,6 @@ namespace ChangeGame.Player
         #region State
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
-        public PlayerNormalAttack NormalAttackState { get; private set; }
         public PlayerRollState RolLState { get; private set; }
         public PlayerMagic1State Magic1State { get; private set; }
         public PlayerMagic2State Magic2State { get; private set; }
@@ -57,7 +56,6 @@ namespace ChangeGame.Player
             _stateMachine = new StateMachine();
             IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _stateMachine, _anim, "idle");
             MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
-            NormalAttackState = new PlayerNormalAttack(this, _infoSO, _inputSO, _stateMachine, _anim, "normalAttack");
             RolLState = new PlayerRollState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
             Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
             Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
