@@ -20,6 +20,7 @@ namespace ChangeGame.Player
         [SerializeField] private float _checkGroundRadius;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private Transform _magicSpawnTran;
+        [SerializeField] private List<Transform> _superPlayerProps = new List<Transform>();
 
         [Header("Component")] 
         [SerializeField] private Animator _anim;
@@ -45,8 +46,11 @@ namespace ChangeGame.Player
         public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp);}
         
         public bool GroundCheck => CheckGround();
+        public bool IsSuperPlayer => _helper.IsSuperPlayer;
 
         public Action OnDeadEvent;
+
+        private PCHelper _helper;
 
         private void Awake()
         {
@@ -60,29 +64,44 @@ namespace ChangeGame.Player
             Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
             Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
             Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3");
+
+            _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime);
         }
 
         private void Start()
         {
             _stateMachine.Initialize(IdleState);
             _statesComp.Initialize(_infoSO.MaxHealth);
+            
+            foreach (Transform prop in _superPlayerProps)
+            {
+                _helper.AddProps(prop);
+            }
         }
 
         private void OnEnable()
         {
             StatesComp.OnDeadEvent += Dead;
             DamageComp.OnDamageEvent += Damage;
+            
+            _helper.OnChangeSuperEvent += ChangeSuperPlaer;
+            _helper.OnChangeNormalEvent += ChangeNormalPlayer;
         }
 
         private void OnDisable()
         {
             StatesComp.OnDeadEvent -= Dead;
             DamageComp.OnDamageEvent -= Damage;
+            
+            _helper.OnChangeSuperEvent -= ChangeSuperPlaer;
+            _helper.OnChangeNormalEvent -= ChangeNormalPlayer;
         }
 
         private void Update()
         {
             _stateMachine.LogicUpdate();
+            
+            _helper.Update();
         }
         
         private void FixedUpdate()
@@ -130,6 +149,16 @@ namespace ChangeGame.Player
         }
 
         private void Damage()
+        {
+            
+        }
+
+        private void ChangeSuperPlaer()
+        {
+            
+        }
+
+        private void ChangeNormalPlayer()
         {
             
         }
