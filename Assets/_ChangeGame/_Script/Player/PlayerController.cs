@@ -20,6 +20,8 @@ namespace ChangeGame.Player
         [SerializeField] private float _checkGroundRadius;
         [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private Transform _magicSpawnTran;
+        [SerializeField] private GameObject _changeSuperEffect;
+        [SerializeField] private GameObject _changeNormalEffect;
         [SerializeField] private List<Transform> _superPlayerProps = new List<Transform>();
 
         [Header("Component")] 
@@ -84,8 +86,7 @@ namespace ChangeGame.Player
             StatesComp.OnDeadEvent += Dead;
             DamageComp.OnDamageEvent += Damage;
             
-            _helper.OnChangeSuperEvent += ChangeSuperPlaer;
-            _helper.OnChangeNormalEvent += ChangeNormalPlayer;
+            _helper.OnChangeModeEvent += ChangeModePlaer;
         }
 
         private void OnDisable()
@@ -93,8 +94,7 @@ namespace ChangeGame.Player
             StatesComp.OnDeadEvent -= Dead;
             DamageComp.OnDamageEvent -= Damage;
             
-            _helper.OnChangeSuperEvent -= ChangeSuperPlaer;
-            _helper.OnChangeNormalEvent -= ChangeNormalPlayer;
+            _helper.OnChangeModeEvent -= ChangeModePlaer;
         }
 
         private void Update()
@@ -153,14 +153,10 @@ namespace ChangeGame.Player
             
         }
 
-        private void ChangeSuperPlaer()
+        private void ChangeModePlaer()
         {
-            
-        }
-
-        private void ChangeNormalPlayer()
-        {
-            
+            if (_helper.IsSuperPlayer) _changeSuperEffect.SetActive(true);
+            else _changeNormalEffect.SetActive(true);
         }
     }
 }
