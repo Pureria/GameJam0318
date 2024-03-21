@@ -13,6 +13,7 @@ namespace ChangeGame.Player
         private float _superPlayerInterval;
         private float _changeModeTime;
 
+        public float ChangeModeTime => _changeModeTime;
         public bool IsSuperPlayer => _isSuperPlayer;
 
         public Action OnChangeModeEvent;

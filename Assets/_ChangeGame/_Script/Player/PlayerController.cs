@@ -15,6 +15,8 @@ namespace ChangeGame.Player
     {
         [Header("Player Info")] 
         [SerializeField] private PlayerInfoSO _infoSO;
+
+        [SerializeField] private PlayerInterSO _interSO;
         [SerializeField] private InputSO _inputSO;
         [SerializeField] private Transform _checkGroundTran;
         [SerializeField] private float _checkGroundRadius;
@@ -37,6 +39,9 @@ namespace ChangeGame.Player
         public PlayerMagic2State Magic2State { get; private set; }
         public PlayerMagic3State Magic3State { get; private set; }
         #endregion
+
+        private bool _isDead;
+        private PCHelper _helper;
         
         private Movement _movementComp;
         private States _statesComp;
@@ -49,10 +54,6 @@ namespace ChangeGame.Player
         
         public bool GroundCheck => CheckGround();
         public bool IsSuperPlayer => _helper.IsSuperPlayer;
-
-        public Action OnDeadEvent;
-
-        private PCHelper _helper;
 
         private void Awake()
         {
@@ -68,6 +69,7 @@ namespace ChangeGame.Player
             Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3");
 
             _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime);
+            _isDead = false;
         }
 
         private void Start()
@@ -79,6 +81,10 @@ namespace ChangeGame.Player
             {
                 _helper.AddProps(prop);
             }
+            
+            _interSO.MaxSuperModeTime = _infoSO.SuperModeTime;
+            _interSO.MaxNormalModeTime = _infoSO.NormalModeTime;
+            _interSO.MaxHealth = _infoSO.MaxHealth;
         }
 
         private void OnEnable()
@@ -99,13 +105,19 @@ namespace ChangeGame.Player
 
         private void Update()
         {
+            if (_isDead) return;
             _stateMachine.LogicUpdate();
             
             _helper.Update();
+
+            _interSO.IsSuperMode = IsSuperPlayer;
+            _interSO.CurrentHealth = StatesComp.CurrentHealth;
+            _interSO.NowModeTime = Time.time - _helper.ChangeModeTime;
         }
         
         private void FixedUpdate()
         {
+            if (_isDead) return;
             _stateMachine.FixedUpdate();
         }
         
@@ -133,10 +145,6 @@ namespace ChangeGame.Player
 
         public void InstantMagic(GameObject magicPrefab, Vector3 dir)
         {
-            //魔法生成位置に魔法を生成
-            //GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, _magicSpawnTran.rotation);
-            
-            //魔法生成位置に魔法を生成して向きをプレイヤーが向いている方向にする
             GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(dir));
             Vector3 eulerAngle = magic.transform.eulerAngles;
             eulerAngle.z = magicPrefab.transform.eulerAngles.z;
@@ -145,7 +153,9 @@ namespace ChangeGame.Player
 
         private void Dead()
         {
-            OnDeadEvent?.Invoke();
+            Debug.Log("プレイヤー死亡");
+            _isDead = true;
+            _interSO.IsDead = true;
         }
 
         private void Damage()
