@@ -40,6 +40,11 @@ namespace ChangeGame.Player
                 _inputSO.Attack3Input = false;
                 _stateMachine.ChangeState(_player.Magic2State);
             }
+            else if (_inputSO.Attack4Input)
+            {
+                _inputSO.Attack4Input = false;
+                _stateMachine.ChangeState(_player.Magic3State);
+            }
         }
 
         public override void FixedUpdate()

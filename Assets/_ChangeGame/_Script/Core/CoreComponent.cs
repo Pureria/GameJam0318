@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CorePackage
 {
+    [DefaultExecutionOrder(-1)]
     public class CoreComponent : MonoBehaviour
     {
         protected Core _core;

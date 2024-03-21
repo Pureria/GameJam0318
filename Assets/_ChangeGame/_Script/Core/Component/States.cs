@@ -8,6 +8,7 @@ namespace CorePackage
     public class States : CoreComponent
     {
         private bool _isInitialize;
+        private bool _isDead;
         private float _maxHealth;
         private float _currentHealth;
         
@@ -15,6 +16,7 @@ namespace CorePackage
 
         public float MaxHealth => _maxHealth;
         public float CurrentHealth => _currentHealth;
+        public bool IsDead => _isDead;
 
         protected override void Awake()
         {
@@ -25,6 +27,7 @@ namespace CorePackage
         public void Initialize(float maxHealth)
         {
             _isInitialize = true;
+            _isDead = false;
             _maxHealth = maxHealth;
             _currentHealth = _maxHealth;
         }
@@ -43,6 +46,7 @@ namespace CorePackage
 
         public void SubHealth(float subAmount)
         {
+            if (_isDead) return;
             if (!_isInitialize)
             {
                 Debug.LogWarning("Statesが初期化されていません。");
@@ -53,6 +57,7 @@ namespace CorePackage
             if(_currentHealth <= 0)
             {
                 _currentHealth = 0;
+                _isDead = true;
                 OnDeadEvent?.Invoke();
             }
         }
