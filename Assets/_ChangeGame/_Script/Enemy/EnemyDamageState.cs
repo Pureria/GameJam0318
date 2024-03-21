@@ -15,6 +15,7 @@ namespace ChangeGame.Enemy
         {
             base.Enter();
             _enemyController.Stop();
+            _anim.SetTrigger(_animName + "T");
             Debug.Log("Enemy‚ªUŒ‚‚ğó‚¯‚½");
         }
 

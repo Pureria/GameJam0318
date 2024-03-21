@@ -138,11 +138,15 @@ namespace ChangeGame.Enemy
 
         private void Dead()
         {
-            //this.gameObject.SetActive(false);
             if (_stateMachine.CurrentState != DeadState)
             {
                 _stateMachine.ChangeState(DeadState);
             }
+        }
+
+        public void SetActiveFalse()
+        {
+            this.gameObject.SetActive(false);
         }
 
         private void Damage()

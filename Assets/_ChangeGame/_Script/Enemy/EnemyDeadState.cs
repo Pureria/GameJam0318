@@ -11,7 +11,24 @@ namespace ChangeGame.Enemy
         {
         }
 
+        public override void Enter()
+        {
+            base.Enter();
+            
+            _enemyController.Stop();
+            _anim.SetTrigger(_animName + "T");
+        }
 
+        public override void LogicUpdate()
+        {
+            base.LogicUpdate();
+
+            if (_animationFinished)
+            {
+                Debug.Log("Enemy‚ÍŽ€‚É‚Ü‚µ‚½");
+                _enemyController.SetActiveFalse();
+            }
+        }
 
     }
 
