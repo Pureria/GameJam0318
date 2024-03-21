@@ -21,6 +21,7 @@ namespace ChangeGame.Enemy
         private NavMeshAgent _agent;
         private States _statesComp;
         private Damage _damageComp;
+        private bool _useEnemy;
 
 
         public EnemyIdleState IdleState { get; private set; }
@@ -48,10 +49,17 @@ namespace ChangeGame.Enemy
         private void Start()
         {
             _agent = GetComponent<NavMeshAgent>();
-            _agent.destination = _goal.position;
             _stateMachine.Initialize(IdleState);
             StatesComp.Initialize(MaxHP);
 
+        }
+
+        public void Initialize()
+        {
+            StatesComp.Initialize(MaxHP);
+            _stateMachine.Initialize(IdleState);
+            _agent.destination = _goal.position;
+            _useEnemy = true;
         }
 
         private void OnEnable()
@@ -64,13 +72,17 @@ namespace ChangeGame.Enemy
         {
             DamageComp.OnDamageEvent -= Damage;
             StatesComp.OnDeadEvent -= Dead;
+            _useEnemy = false;
         }
 
         private void Update()
         {
             _stateMachine.LogicUpdate();
-            
-            _agent.destination = _goal.position;
+
+            if (_agent.pathStatus != NavMeshPathStatus.PathInvalid)
+            {
+                _agent.destination = _goal.position;
+            }
         }
 
         private void FixedUpdate()

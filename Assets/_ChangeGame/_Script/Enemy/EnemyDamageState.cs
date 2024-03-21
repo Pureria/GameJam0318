@@ -15,8 +15,17 @@ namespace ChangeGame.Enemy
         {
             base.Enter();
             _enemyController.Stop();
+            _enemyController.DamageComp.SetIsInvisible(true);
             _anim.SetTrigger(_animName + "T");
+
             Debug.Log("Enemy‚ªUŒ‚‚ğó‚¯‚½");
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+
+            _enemyController.DamageComp.SetIsInvisible(false);
         }
 
         public override void LogicUpdate()
