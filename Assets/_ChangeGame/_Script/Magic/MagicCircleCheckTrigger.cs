@@ -42,6 +42,8 @@ namespace ChangeGame.Magic
 
         private void OnDrawGizmos()
         {
+            if (!_isNowAttack) return;
+            
             //円を描画
             Gizmos.color = new Color(0, 0, 255, 0.5f);
             Gizmos.DrawSphere(_checkTransform.position, _checkRadius);

@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+namespace ChangeGame.Player
+{
+    public class PCHelper
+    {
+        private List<Transform> _playerProps;
+        private bool _isSuperPlayer;
+        private float _normalPlayerInterval;
+        private float _superPlayerInterval;
+        private float _changeModeTime;
+
+        public bool IsSuperPlayer => _isSuperPlayer;
+
+        public Action OnChangeSuperEvent;
+        public Action OnChangeNormalEvent;
+        
+        public PCHelper(float normalTime, float superTime)
+        {
+            _playerProps = new List<Transform>();
+            _isSuperPlayer = false;
+            _changeModeTime = Time.time;
+            _normalPlayerInterval = normalTime;
+            _superPlayerInterval = superTime;
+        }
+
+        public void AddProps(Transform prop)
+        {
+            //リストにないものなら追加する
+            if (!_playerProps.Contains(prop))
+            {
+                _playerProps.Add(prop);
+            }
+        }
+        
+        public void RemoveProps(Transform prop)
+        {
+            //リストにあるものなら削除する
+            if (_playerProps.Contains(prop))
+            {
+                _playerProps.Remove(prop);
+            }
+        }
+
+        private void SetSuperPlayer(bool isSuper)
+        {
+            _isSuperPlayer = isSuper;
+            
+            //リストにあるもののアクティブを切り替える
+            foreach (var prop in _playerProps)
+            {
+                prop.gameObject.SetActive(isSuper);
+            }
+        }
+
+        public void Update()
+        {
+            float checkTime = 0;
+            if (_isSuperPlayer) checkTime = _superPlayerInterval;
+            else checkTime = _normalPlayerInterval;
+
+            if (_changeModeTime + checkTime <= Time.time)
+            {
+                _changeModeTime = Time.time;
+                SetSuperPlayer(!_isSuperPlayer);
+
+                if (_isSuperPlayer) OnChangeSuperEvent?.Invoke();
+                else OnChangeNormalEvent?.Invoke();
+            }
+        }
+    }
+}
