@@ -27,6 +27,7 @@ namespace ChangeGame.Enemy
         public EnemyWalkState WalkState { get; private set; }
         public EnemyAttackState AttackState { get; private set; }
         public EnemyDamageState DamageState { get; private set; }
+        public EnemyDeadState DeadState { get; private set; }
         public Core _core { get; private set; }
         public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp); }
         public Damage DamageComp { get => _damageComp ?? _core.GetCoreComponent(ref _damageComp); }
@@ -37,6 +38,9 @@ namespace ChangeGame.Enemy
             IdleState = new EnemyIdleState(this, _stateMachine, _animator, "Idle"); //Ç±Ç±Ç≈Controllerà¯êîÇ∆ÇµÇƒìnÇµÇƒÇ¢ÇÈ
             WalkState = new EnemyWalkState(this, _stateMachine, _animator, "Walk");
             AttackState = new EnemyAttackState(this, _stateMachine, _animator, "Attack");
+            DamageState = new EnemyDamageState(this, _stateMachine, _animator, "Damage");
+            DeadState = new EnemyDeadState(this, _stateMachine, _animator, "Dead");
+            
             _core = GetComponentInChildren<Core>();
             
         }
@@ -134,12 +138,19 @@ namespace ChangeGame.Enemy
 
         private void Dead()
         {
-            this.gameObject.SetActive(false);
+            //this.gameObject.SetActive(false);
+            if (_stateMachine.CurrentState != DeadState)
+            {
+                _stateMachine.ChangeState(DeadState);
+            }
         }
 
         private void Damage()
         {
-
+            if (_stateMachine.CurrentState != DeadState)
+            {
+                _stateMachine.ChangeState(DamageState);
+            }
         }
 
     }

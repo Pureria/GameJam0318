@@ -15,6 +15,7 @@ namespace ChangeGame.Enemy
         {
             base.Enter();
             _enemyController.Stop();
+            Debug.Log("Enemy‚ªUŒ‚‚ğó‚¯‚½");
         }
 
         public override void LogicUpdate()
@@ -26,7 +27,7 @@ namespace ChangeGame.Enemy
             }
         }
 
-        
+
     }
 
 }
