@@ -18,9 +18,6 @@ namespace ChangeGame.Player
 
         [SerializeField] private PlayerInterSO _interSO;
         [SerializeField] private InputSO _inputSO;
-        [SerializeField] private Transform _checkGroundTran;
-        [SerializeField] private float _checkGroundRadius;
-        [SerializeField] private LayerMask _groundLayer;
         [SerializeField] private Transform _magicSpawnTran;
         [SerializeField] private GameObject _changeSuperEffect;
         [SerializeField] private GameObject _changeNormalEffect;
@@ -51,8 +48,6 @@ namespace ChangeGame.Player
         public Movement MovementComp { get => _movementComp ?? _core.GetCoreComponent(ref _movementComp);}
         public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp);}
         public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp);}
-        
-        public bool GroundCheck => CheckGround();
         public bool IsSuperPlayer => _helper.IsSuperPlayer;
 
         private void Awake()
@@ -119,23 +114,6 @@ namespace ChangeGame.Player
         {
             if (_isDead) return;
             _stateMachine.FixedUpdate();
-        }
-        
-        private void OnDrawGizmos()
-        {
-            // 地面チェック用のギズモ
-            Gizmos.color = new Color(0, 255, 0, 0.5f);
-            Gizmos.DrawSphere(_checkGroundTran.position, _checkGroundRadius);
-        }
-
-        /// <summary>
-        /// 地面チェック
-        /// </summary>
-        /// <returns>TRUE : 地面についてる     FALSE : 空中にいる</returns>
-        private bool CheckGround()
-        {
-            // 地面チェック
-            return Physics.CheckSphere(_checkGroundTran.position, _checkGroundRadius, _groundLayer);
         }
 
         public void AnimationFinishTrigger()
