@@ -20,15 +20,16 @@ namespace ChangeGame.Enemy
         private State.StateMachine _stateMachine;
         private NavMeshAgent _agent;
         private States _statesComp;
-        private Damage _damasgeComp;
+        private Damage _damageComp;
 
 
         public EnemyIdleState IdleState { get; private set; }
         public EnemyWalkState WalkState { get; private set; }
         public EnemyAttackState AttackState { get; private set; }
+        public EnemyDamageState DamageState { get; private set; }
         public Core _core { get; private set; }
         public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp); }
-        public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp); }
+        public Damage DamageComp { get => _damageComp ?? _core.GetCoreComponent(ref _damageComp); }
 
         private void Awake()
         {
@@ -51,13 +52,13 @@ namespace ChangeGame.Enemy
 
         private void OnEnable()
         {
-            DamageComp.OnDamageEvent += Wince;
+            DamageComp.OnDamageEvent += Damage;
             StatesComp.OnDeadEvent += Dead;
         }
 
         private void OnDisable()
         {
-            DamageComp.OnDamageEvent -= Wince;
+            DamageComp.OnDamageEvent -= Damage;
             StatesComp.OnDeadEvent -= Dead;
         }
 
@@ -76,7 +77,7 @@ namespace ChangeGame.Enemy
         public void Walk()
         {
             _agent.isStopped = false;
-            Debug.Log("•à‚¢‚Ä‚¢‚Ü‚·");
+            Debug.Log("Enemy‚ª•à‚¢‚Ä‚¢‚Ü‚·");
         }
 
         public void Stop()
@@ -133,10 +134,10 @@ namespace ChangeGame.Enemy
 
         private void Dead()
         {
-
+            this.gameObject.SetActive(false);
         }
 
-        private void Wince()
+        private void Damage()
         {
 
         }
