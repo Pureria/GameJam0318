@@ -17,6 +17,7 @@ namespace ChangeGame.Input
             CheckAttack1Input();
             CheckAttack2Input();
             CheckAttack3Input();
+            CheckAttack4Input();
             CheckRollInput();
         }
 
@@ -51,6 +52,15 @@ namespace ChangeGame.Input
             {
                 _inputSO.Attack3Input = true;
                 _inputSO.Attack3InputTime = Time.time;
+            }
+        }
+        
+        public void OnAttack4Input(InputAction.CallbackContext context)
+        {
+            if (context.started)
+            {
+                _inputSO.Attack4Input = true;
+                _inputSO.Attack4InputTime = Time.time;
             }
         }
 
@@ -96,6 +106,15 @@ namespace ChangeGame.Input
             if (_inputSO.Attack3InputTime + _inputTime <= Time.time)
             {
                 _inputSO.Attack3Input = false;
+            }
+        }
+        
+        private void CheckAttack4Input()
+        {
+            if (!_inputSO.Attack4Input) return;
+            if (_inputSO.Attack4InputTime + _inputTime <= Time.time)
+            {
+                _inputSO.Attack4Input = false;
             }
         }
     }

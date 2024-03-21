@@ -13,10 +13,12 @@ namespace ChangeGame.Input
         public bool Attack1Input;
         public bool Attack2Input;
         public bool Attack3Input;
+        public bool Attack4Input;
         
         public float Attack1InputTime;
         public float Attack2InputTime;
         public float RollInputTime;
         public float Attack3InputTime;
+        public float Attack4InputTime;
     }
 }

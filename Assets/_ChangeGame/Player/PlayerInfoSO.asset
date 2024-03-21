@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   MoveSpeed: 5
-  Magic1Prefab: {fileID: 5478296456640463766, guid: 540d2ff500b9cbb4db780d60fb35d474,
+  Magic1Prefab: {fileID: 6432875725016878281, guid: 9fd0e66abf3a583478f10c5a006e6a13,
     type: 3}
   Magic2Prefab: {fileID: 3923154225855349293, guid: bd93ecc7ab447a644ab415c7111f2d3a,
+    type: 3}
+  Magic3Prefab: {fileID: 5478296456640463766, guid: 540d2ff500b9cbb4db780d60fb35d474,
     type: 3}

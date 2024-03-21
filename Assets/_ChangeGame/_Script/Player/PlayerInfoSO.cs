@@ -15,5 +15,6 @@ namespace ChangeGame.Player
         public GameObject Magic1Prefab;
 
         public GameObject Magic2Prefab;
+        public GameObject Magic3Prefab;
     }
 }

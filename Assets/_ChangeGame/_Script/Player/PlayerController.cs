@@ -32,6 +32,7 @@ namespace ChangeGame.Player
         public PlayerRollState RolLState { get; private set; }
         public PlayerMagic1State Magic1State { get; private set; }
         public PlayerMagic2State Magic2State { get; private set; }
+        public PlayerMagic3State Magic3State { get; private set; }
         #endregion
         
         private Movement _movementComp;
@@ -58,6 +59,7 @@ namespace ChangeGame.Player
             RolLState = new PlayerRollState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
             Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
             Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
+            Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3");
         }
 
         private void Start()
