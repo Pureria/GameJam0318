@@ -16,34 +16,32 @@ namespace ChangeGame.Player
         {
             base.LogicUpdate();
 
-            if (_inputSO.MoveInput == Vector3.zero)
+            if(_inputSO.MoveInput == Vector3.zero)
             {
                 _stateMachine.ChangeState(_player.IdleState);
-            }
-            else if (_inputSO.Attack1Input)
-            {
-                _inputSO.Attack1Input = false;
-                _stateMachine.ChangeState(_player.NormalAttackState);
             }
             else if (_inputSO.RollInput)
             {
                 _inputSO.RollInput = false;
                 _stateMachine.ChangeState(_player.RolLState);
             }
-            else if (_inputSO.Attack2Input)
+            else if (_player.IsSuperPlayer)
             {
-                _inputSO.Attack2Input = false;
-                _stateMachine.ChangeState(_player.Magic1State);
-            }
-            else if (_inputSO.Attack3Input)
-            {
-                _inputSO.Attack3Input = false;
-                _stateMachine.ChangeState(_player.Magic2State);
-            }
-            else if (_inputSO.Attack4Input)
-            {
-                _inputSO.Attack4Input = false;
-                _stateMachine.ChangeState(_player.Magic3State);
+                if (_inputSO.Attack2Input)
+                {
+                    _inputSO.Attack2Input = false;
+                    _stateMachine.ChangeState(_player.Magic1State);
+                }
+                else if (_inputSO.Attack3Input)
+                {
+                    _inputSO.Attack3Input = false;
+                    _stateMachine.ChangeState(_player.Magic2State);
+                }
+                else if (_inputSO.Attack4Input)
+                {
+                    _inputSO.Attack4Input = false;
+                    _stateMachine.ChangeState(_player.Magic3State);
+                }
             }
         }
 
