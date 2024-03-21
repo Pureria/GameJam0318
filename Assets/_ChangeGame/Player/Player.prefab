@@ -323,6 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infoSO: {fileID: 11400000, guid: 903f01fb966d0a642ac8c6f301eba4b6, type: 2}
+  _interSO: {fileID: 11400000, guid: 2cc4e44b4e64a354f892ea9c9a6ccd61, type: 2}
   _inputSO: {fileID: 11400000, guid: ebef1b6d3a1e41f42a1a85db5bb24634, type: 2}
   _checkGroundTran: {fileID: 9160861238675683577}
   _checkGroundRadius: 0.2
