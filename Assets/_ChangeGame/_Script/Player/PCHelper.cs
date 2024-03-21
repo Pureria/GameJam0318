@@ -15,8 +15,7 @@ namespace ChangeGame.Player
 
         public bool IsSuperPlayer => _isSuperPlayer;
 
-        public Action OnChangeSuperEvent;
-        public Action OnChangeNormalEvent;
+        public Action OnChangeModeEvent;
         
         public PCHelper(float normalTime, float superTime)
         {
@@ -67,8 +66,7 @@ namespace ChangeGame.Player
                 _changeModeTime = Time.time;
                 SetSuperPlayer(!_isSuperPlayer);
 
-                if (_isSuperPlayer) OnChangeSuperEvent?.Invoke();
-                else OnChangeNormalEvent?.Invoke();
+                OnChangeModeEvent?.Invoke();
             }
         }
     }
