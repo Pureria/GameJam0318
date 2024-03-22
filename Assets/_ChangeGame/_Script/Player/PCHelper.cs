@@ -70,5 +70,14 @@ namespace ChangeGame.Player
                 OnChangeModeEvent?.Invoke();
             }
         }
+
+        /// <summary>
+        /// 現在のモードの残り時間を減らす
+        /// </summary>
+        /// <param name="boostTime">減らす時間</param>
+        public void SubNowModeTime(float boostTime)
+        {
+            _changeModeTime -= boostTime;
+        }
     }
 }
