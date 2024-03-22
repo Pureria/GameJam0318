@@ -233,7 +233,6 @@ Transform:
   - {fileID: 6190636027786999725}
   - {fileID: 5001109993136796607}
   - {fileID: 7169179610272775227}
-  - {fileID: 9160861238675683577}
   - {fileID: 3310545211612209507}
   - {fileID: 6776525218374750833}
   - {fileID: 6602404127438952951}
@@ -323,12 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _infoSO: {fileID: 11400000, guid: 903f01fb966d0a642ac8c6f301eba4b6, type: 2}
+  _interSO: {fileID: 11400000, guid: 2cc4e44b4e64a354f892ea9c9a6ccd61, type: 2}
   _inputSO: {fileID: 11400000, guid: ebef1b6d3a1e41f42a1a85db5bb24634, type: 2}
-  _checkGroundTran: {fileID: 9160861238675683577}
-  _checkGroundRadius: 0.2
-  _groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
   _magicSpawnTran: {fileID: 3310545211612209507}
   _changeSuperEffect: {fileID: 7926368512481264906}
   _changeNormalEffect: {fileID: 3883901035161278785}
@@ -694,37 +689,6 @@ Transform:
   m_Children:
   - {fileID: 3180744490484476544}
   - {fileID: 8629524709234276043}
-  m_Father: {fileID: 4616503134234965454}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8876739637831941500
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 9160861238675683577}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &9160861238675683577
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8876739637831941500}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.102, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
   m_Father: {fileID: 4616503134234965454}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &297503429655567174

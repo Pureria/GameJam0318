@@ -15,15 +15,14 @@ namespace ChangeGame.Player
     {
         [Header("Player Info")] 
         [SerializeField] private PlayerInfoSO _infoSO;
+
+        [SerializeField] private PlayerInterSO _interSO;
         [SerializeField] private InputSO _inputSO;
-        [SerializeField] private Transform _checkGroundTran;
-        [SerializeField] private float _checkGroundRadius;
-        [SerializeField] private LayerMask _groundLayer;
-        [SerializeField] private Transform _magicSpawnTran;
         [SerializeField] private GameObject _changeSuperEffect;
         [SerializeField] private GameObject _changeNormalEffect;
         [SerializeField] private List<Transform> _superPlayerProps = new List<Transform>();
-
+        [SerializeField] private Vector3 _magicSpawnPoint;
+        
         [Header("Component")] 
         [SerializeField] private Animator _anim;
 
@@ -31,12 +30,15 @@ namespace ChangeGame.Player
         #region State
         public PlayerIdleState IdleState { get; private set; }
         public PlayerMoveState MoveState { get; private set; }
-        public PlayerNormalAttack NormalAttackState { get; private set; }
-        public PlayerRollState RolLState { get; private set; }
+        public PlayerAvoidState RolLState { get; private set; }
         public PlayerMagic1State Magic1State { get; private set; }
         public PlayerMagic2State Magic2State { get; private set; }
         public PlayerMagic3State Magic3State { get; private set; }
+        public PlayerDeadState DeadState { get; private set; }
         #endregion
+
+        private bool _isDead;
+        private PCHelper _helper;
         
         private Movement _movementComp;
         private States _statesComp;
@@ -46,13 +48,7 @@ namespace ChangeGame.Player
         public Movement MovementComp { get => _movementComp ?? _core.GetCoreComponent(ref _movementComp);}
         public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp);}
         public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp);}
-        
-        public bool GroundCheck => CheckGround();
         public bool IsSuperPlayer => _helper.IsSuperPlayer;
-
-        public Action OnDeadEvent;
-
-        private PCHelper _helper;
 
         private void Awake()
         {
@@ -61,13 +57,14 @@ namespace ChangeGame.Player
             _stateMachine = new StateMachine();
             IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _stateMachine, _anim, "idle");
             MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
-            NormalAttackState = new PlayerNormalAttack(this, _infoSO, _inputSO, _stateMachine, _anim, "normalAttack");
-            RolLState = new PlayerRollState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
+            RolLState = new PlayerAvoidState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
             Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
             Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
             Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3");
-
+            DeadState = new PlayerDeadState(this, _infoSO, _inputSO, _stateMachine, _anim, "dead");
+            
             _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime);
+            _isDead = false;
         }
 
         private void Start()
@@ -79,6 +76,10 @@ namespace ChangeGame.Player
             {
                 _helper.AddProps(prop);
             }
+            
+            _interSO.MaxSuperModeTime = _infoSO.SuperModeTime;
+            _interSO.MaxNormalModeTime = _infoSO.NormalModeTime;
+            _interSO.MaxHealth = _infoSO.MaxHealth;
         }
 
         private void OnEnable()
@@ -99,31 +100,33 @@ namespace ChangeGame.Player
 
         private void Update()
         {
+            if (_isDead) return;
             _stateMachine.LogicUpdate();
             
             _helper.Update();
-        }
-        
-        private void FixedUpdate()
-        {
-            _stateMachine.FixedUpdate();
-        }
-        
-        private void OnDrawGizmos()
-        {
-            // 地面チェック用のギズモ
-            Gizmos.color = new Color(0, 255, 0, 0.5f);
-            Gizmos.DrawSphere(_checkGroundTran.position, _checkGroundRadius);
+
+            _interSO.IsSuperMode = IsSuperPlayer;
+            _interSO.CurrentHealth = StatesComp.CurrentHealth;
+            _interSO.NowModeTime = Time.time - _helper.ChangeModeTime;
+            
+            _anim.SetBool("isSuperMode", IsSuperPlayer);
         }
 
-        /// <summary>
-        /// 地面チェック
-        /// </summary>
-        /// <returns>TRUE : 地面についてる     FALSE : 空中にいる</returns>
-        private bool CheckGround()
+        private void OnDrawGizmos()
         {
-            // 地面チェック
-            return Physics.CheckSphere(_checkGroundTran.position, _checkGroundRadius, _groundLayer);
+            Vector3 dir = Vector3.zero;
+            if(Camera.main != null) dir = Vector3.Scale(UnityEngine.Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+            //マジックの生成位置を表示
+            Gizmos.color = new Color(0, 255, 0, 0.5f);
+            Vector3 magicSpawnPoint = transform.position + dir * _magicSpawnPoint.z;
+            magicSpawnPoint.y += _magicSpawnPoint.y;
+            Gizmos.DrawSphere(magicSpawnPoint, 0.1f);
+        }
+
+        private void FixedUpdate()
+        {
+            if (_isDead) return;
+            _stateMachine.FixedUpdate();
         }
 
         public void AnimationFinishTrigger()
@@ -133,24 +136,35 @@ namespace ChangeGame.Player
 
         public void InstantMagic(GameObject magicPrefab, Vector3 dir)
         {
-            //魔法生成位置に魔法を生成
-            //GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, _magicSpawnTran.rotation);
+            Vector3 spawnPoint = transform.position + dir * _magicSpawnPoint.z;
+            spawnPoint.y += _magicSpawnPoint.y;
             
-            //魔法生成位置に魔法を生成して向きをプレイヤーが向いている方向にする
-            GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(dir));
+            GameObject magic = Instantiate(magicPrefab, spawnPoint, Quaternion.LookRotation(dir));
             Vector3 eulerAngle = magic.transform.eulerAngles;
             eulerAngle.z = magicPrefab.transform.eulerAngles.z;
             magic.transform.eulerAngles = eulerAngle;
         }
 
+        /// <summary>
+        /// プレイヤーの死亡アニメーションが終了したら呼ばれる
+        /// </summary>
+        public void CallPlayerDead()
+        {
+            Debug.Log("プレイヤー死亡");
+            _interSO.IsDead = true;
+            _isDead = true;
+        }
+
         private void Dead()
         {
-            OnDeadEvent?.Invoke();
+            _stateMachine.ChangeState(DeadState);
+            _stateMachine.SetCanChangeState(false);
+            _interSO.OnDeadEvent?.Invoke();
         }
 
         private void Damage()
         {
-            
+            _interSO.OnDamageEvent?.Invoke();
         }
 
         private void ChangeModePlaer()

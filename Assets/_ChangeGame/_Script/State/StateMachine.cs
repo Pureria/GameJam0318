@@ -8,6 +8,7 @@ namespace State
     {
         private BaseState _currentState;
         private BaseState _oldState;
+        private bool _canChangeState;
 
         public BaseState CurrentState => _currentState;
         public BaseState OldState => _oldState;
@@ -16,6 +17,7 @@ namespace State
         {
             _currentState = initState;
             _oldState = initState;
+            _canChangeState = true;
             
             _currentState.Enter();
         }
@@ -32,10 +34,14 @@ namespace State
 
         public void ChangeState(BaseState newState)
         {
+            if (!_canChangeState) return;
+            
             _currentState.Exit();
             _oldState = _currentState;
             _currentState = newState;
             _currentState.Enter();
         }
+        
+        public void SetCanChangeState(bool canChange) => _canChangeState = canChange;
     }
 }
