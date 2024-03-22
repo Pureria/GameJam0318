@@ -159,11 +159,12 @@ namespace ChangeGame.Player
         {
             _stateMachine.ChangeState(DeadState);
             _stateMachine.SetCanChangeState(false);
+            _interSO.OnDeadEvent?.Invoke();
         }
 
         private void Damage()
         {
-            
+            _interSO.OnDamageEvent?.Invoke();
         }
 
         private void ChangeModePlaer()
