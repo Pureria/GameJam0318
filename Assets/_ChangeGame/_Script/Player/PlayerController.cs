@@ -106,6 +106,8 @@ namespace ChangeGame.Player
             _interSO.IsSuperMode = IsSuperPlayer;
             _interSO.CurrentHealth = StatesComp.CurrentHealth;
             _interSO.NowModeTime = Time.time - _helper.ChangeModeTime;
+            
+            _anim.SetBool("isSuperMode", IsSuperPlayer);
         }
         
         private void FixedUpdate()
