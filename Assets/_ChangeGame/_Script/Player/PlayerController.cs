@@ -111,7 +111,10 @@ namespace ChangeGame.Player
 
             _interSO.IsSuperMode = IsSuperPlayer;
             _interSO.CurrentHealth = StatesComp.CurrentHealth;
-            _interSO.NowModeTime = Time.time - _helper.ChangeModeTime;
+            _interSO.NowModeTimeRate = _helper.GetNowModeTimeRate();
+            _interSO.Magic1CoolTimeRate = Magic1State.GetCoolTimeRate();
+            _interSO.Magic2CoolTimeRate = Magic2State.GetCoolTimeRate();
+            _interSO.Magic3CoolTimeRate = Magic3State.GetCoolTimeRate();
             
             _anim.SetBool("isSuperMode", IsSuperPlayer);
         }

@@ -79,5 +79,18 @@ namespace ChangeGame.Player
         {
             _changeModeTime -= boostTime;
         }
+
+        /// <summary>
+        /// 現在のモードの残り時間の割合を返す
+        /// </summary>
+        /// <returns>残り時間の割合</returns>
+        public float GetNowModeTimeRate()
+        {
+            float interval = 0;
+            //現在のモードの残り時間の割合を返す
+            if (_isSuperPlayer) interval = _superPlayerInterval;
+            else interval = _normalPlayerInterval;
+            return Mathf.Clamp01(Time.time - _changeModeTime / interval);
+        }
     }
 }
