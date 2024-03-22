@@ -34,6 +34,7 @@ namespace ChangeGame.Player
         public PlayerMagic1State Magic1State { get; private set; }
         public PlayerMagic2State Magic2State { get; private set; }
         public PlayerMagic3State Magic3State { get; private set; }
+        public PlayerDeadState DeadState { get; private set; }
         #endregion
 
         private bool _isDead;
@@ -60,7 +61,8 @@ namespace ChangeGame.Player
             Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
             Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
             Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3");
-
+            DeadState = new PlayerDeadState(this, _infoSO, _inputSO, _stateMachine, _anim, "dead");
+            
             _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime);
             _isDead = false;
         }
@@ -143,11 +145,20 @@ namespace ChangeGame.Player
             magic.transform.eulerAngles = eulerAngle;
         }
 
-        private void Dead()
+        /// <summary>
+        /// プレイヤーの死亡アニメーションが終了したら呼ばれる
+        /// </summary>
+        public void CallPlayerDead()
         {
             Debug.Log("プレイヤー死亡");
-            _isDead = true;
             _interSO.IsDead = true;
+            _isDead = true;
+        }
+
+        private void Dead()
+        {
+            _stateMachine.ChangeState(DeadState);
+            _stateMachine.SetCanChangeState(false);
         }
 
         private void Damage()
