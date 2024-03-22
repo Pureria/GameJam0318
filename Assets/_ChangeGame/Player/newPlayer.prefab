@@ -10954,6 +10954,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: -89.99998
       objectReference: {fileID: 0}
+    - target: {fileID: 8382013089615490, guid: fed43acbcb6153e4799fc88c95eba7c3, type: 3}
+      propertyPath: m_Name
+      value: Sphere003
+      objectReference: {fileID: 0}
     - target: {fileID: 139545020349691572, guid: fed43acbcb6153e4799fc88c95eba7c3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11144,6 +11148,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90.52123
       objectReference: {fileID: 0}
+    - target: {fileID: 5505343294730430786, guid: fed43acbcb6153e4799fc88c95eba7c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Sphere002
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: fed43acbcb6153e4799fc88c95eba7c3,
         type: 3}
       propertyPath: m_Enabled
@@ -11183,6 +11192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.15741952
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914029843501192230, guid: fed43acbcb6153e4799fc88c95eba7c3,
+        type: 3}
+      propertyPath: m_Name
+      value: Object004
       objectReference: {fileID: 0}
     - target: {fileID: 8275427193605074043, guid: fed43acbcb6153e4799fc88c95eba7c3,
         type: 3}

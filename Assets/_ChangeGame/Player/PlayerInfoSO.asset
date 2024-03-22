@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 100
   MoveSpeed: 5
-  NormalModeTime: 15
-  SuperModeTime: 10000
+  NormalModeTime: 30
+  SuperModeTime: 15
   ItemSubTime: 4
   Magic1Prefab: {fileID: 6432875725016878281, guid: 9fd0e66abf3a583478f10c5a006e6a13,
     type: 3}
