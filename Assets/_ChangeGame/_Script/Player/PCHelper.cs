@@ -90,7 +90,7 @@ namespace ChangeGame.Player
             //現在のモードの残り時間の割合を返す
             if (_isSuperPlayer) interval = _superPlayerInterval;
             else interval = _normalPlayerInterval;
-            return Mathf.Clamp01(Time.time - _changeModeTime / interval);
+            return Mathf.Clamp01((Time.time - _changeModeTime) / interval);
         }
     }
 }

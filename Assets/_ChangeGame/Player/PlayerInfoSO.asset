@@ -23,3 +23,6 @@ MonoBehaviour:
     type: 3}
   Magic3Prefab: {fileID: 5478296456640463766, guid: 540d2ff500b9cbb4db780d60fb35d474,
     type: 3}
+  Magic1CoolTime: 1
+  Magic2CoolTime: 1
+  Magic3CoolTime: 7
