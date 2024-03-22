@@ -18,11 +18,11 @@ namespace ChangeGame.Player
 
         [SerializeField] private PlayerInterSO _interSO;
         [SerializeField] private InputSO _inputSO;
-        [SerializeField] private Transform _magicSpawnTran;
         [SerializeField] private GameObject _changeSuperEffect;
         [SerializeField] private GameObject _changeNormalEffect;
         [SerializeField] private List<Transform> _superPlayerProps = new List<Transform>();
-
+        [SerializeField] private Vector3 _magicSpawnPoint;
+        
         [Header("Component")] 
         [SerializeField] private Animator _anim;
 
@@ -109,7 +109,18 @@ namespace ChangeGame.Player
             
             _anim.SetBool("isSuperMode", IsSuperPlayer);
         }
-        
+
+        private void OnDrawGizmos()
+        {
+            Vector3 dir = Vector3.zero;
+            if(Camera.main != null) dir = Vector3.Scale(UnityEngine.Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
+            //マジックの生成位置を表示
+            Gizmos.color = new Color(0, 255, 0, 0.5f);
+            Vector3 magicSpawnPoint = transform.position + dir * _magicSpawnPoint.z;
+            magicSpawnPoint.y += _magicSpawnPoint.y;
+            Gizmos.DrawSphere(magicSpawnPoint, 0.1f);
+        }
+
         private void FixedUpdate()
         {
             if (_isDead) return;
@@ -123,7 +134,10 @@ namespace ChangeGame.Player
 
         public void InstantMagic(GameObject magicPrefab, Vector3 dir)
         {
-            GameObject magic = Instantiate(magicPrefab, _magicSpawnTran.position, Quaternion.LookRotation(dir));
+            Vector3 spawnPoint = transform.position + dir * _magicSpawnPoint.z;
+            spawnPoint.y += _magicSpawnPoint.y;
+            
+            GameObject magic = Instantiate(magicPrefab, spawnPoint, Quaternion.LookRotation(dir));
             Vector3 eulerAngle = magic.transform.eulerAngles;
             eulerAngle.z = magicPrefab.transform.eulerAngles.z;
             magic.transform.eulerAngles = eulerAngle;
