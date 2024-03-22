@@ -9,16 +9,11 @@ namespace ChangeGame.Player
     public class PlayerAttackState : PlayerBaseState
     {
         protected float _exitTime;
-        protected float _setCoolTime;
+        private float _setCoolTime;
         public PlayerAttackState(PlayerController player, PlayerInfoSO infoSo, InputSO inputSo, StateMachine stateMachine, Animator anim, string animName, float attackCoolTime) : base(player, infoSo, inputSo, stateMachine, anim, animName)
         {
-        }
-
-        public override void Enter()
-        {
-            if(_exitTime)
-            
-            base.Enter();
+            _setCoolTime = attackCoolTime;
+            _exitTime = -attackCoolTime;
         }
 
         public override void Exit()
@@ -26,5 +21,11 @@ namespace ChangeGame.Player
             base.Exit();
             _exitTime = Time.time;
         }
+
+        /// <summary>
+        /// クールタイム中かどうか？
+        /// </summary>
+        /// <returns>TRUE：クールタイム中   FALSE：クールタイム終了</returns>
+        public bool CheckCoolTime() { return _exitTime + _setCoolTime > Time.time; }
     }
 }

@@ -60,9 +60,9 @@ namespace ChangeGame.Player
             IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _stateMachine, _anim, "idle");
             MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
             RolLState = new PlayerAvoidState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
-            Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
-            Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
-            Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3");
+            Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1", _infoSO.Magic1CoolTime);
+            Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2", _infoSO.Magic2CoolTime);
+            Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3", _infoSO.Magic3CoolTime);
             DeadState = new PlayerDeadState(this, _infoSO, _inputSO, _stateMachine, _anim, "dead");
             
             _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime);

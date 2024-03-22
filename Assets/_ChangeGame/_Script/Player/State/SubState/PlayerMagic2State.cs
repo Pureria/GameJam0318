@@ -6,11 +6,11 @@ using UnityEngine;
 
 namespace ChangeGame.Player
 {
-    public class PlayerMagic2State : PlayerBaseState
+    public class PlayerMagic2State : PlayerAttackState
     {
         private Vector3 cameraForward;
         
-        public PlayerMagic2State(PlayerController player, PlayerInfoSO infoSo, InputSO inputSo, StateMachine stateMachine, Animator anim, string animName) : base(player, infoSo, inputSo, stateMachine, anim, animName)
+        public PlayerMagic2State(PlayerController player, PlayerInfoSO infoSo, InputSO inputSo, StateMachine stateMachine, Animator anim, string animName, float attackCoolTime) : base(player, infoSo, inputSo, stateMachine, anim, animName, attackCoolTime)
         {
         }
         

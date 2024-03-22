@@ -33,17 +33,17 @@ namespace ChangeGame.Player
             }
             else if (_player.IsSuperPlayer)
             {
-                if (_inputSO.Attack2Input)
+                if (_inputSO.Attack2Input && !_player.Magic1State.CheckCoolTime())
                 {
                     _inputSO.Attack2Input = false;
                     _stateMachine.ChangeState(_player.Magic1State);
                 }
-                else if (_inputSO.Attack3Input)
+                else if (_inputSO.Attack3Input && !_player.Magic2State.CheckCoolTime())
                 {
                     _inputSO.Attack3Input = false;
                     _stateMachine.ChangeState(_player.Magic2State);
                 }
-                else if (_inputSO.Attack4Input)
+                else if (_inputSO.Attack4Input && !_player.Magic3State.CheckCoolTime())
                 {
                     _inputSO.Attack4Input = false;
                     _stateMachine.ChangeState(_player.Magic3State);
