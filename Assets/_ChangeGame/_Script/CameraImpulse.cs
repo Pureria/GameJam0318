@@ -7,7 +7,7 @@ using UnityEngine;
 public class CameraImpulse : MonoBehaviour
 {
     [SerializeField] private float _smallAmplitude = 1;
-    [SerializeField] private float _middleAmplitude = 2;
+    [SerializeField] private float _mediumAmplitude = 2;
     [SerializeField] private float _largeAmplitude = 3;
 
     private  CinemachineImpulseSource _source;
@@ -24,9 +24,9 @@ public class CameraImpulse : MonoBehaviour
         _source.GenerateImpulse();
     }
 
-    public void MiddleImpulse()
+    public void MediumImpulse()
     {
-        _source.m_ImpulseDefinition.m_AmplitudeGain = _middleAmplitude;
+        _source.m_ImpulseDefinition.m_AmplitudeGain = _mediumAmplitude;
         _source.GenerateImpulse();
     }
 
