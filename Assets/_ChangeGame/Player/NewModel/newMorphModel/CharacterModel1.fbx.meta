@@ -3,7 +3,27 @@ guid: 27be610eca8820d45942ad30e131ea6a
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rod_texture
+    second: {fileID: 2100000, guid: 49869fb0a998cf846bda040c5f769216, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tex1
+    second: {fileID: 2100000, guid: 23b7ad37b0e182a4fa82fbce6fa043b0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tex2
+    second: {fileID: 2100000, guid: 86af7eff60283464d9db4302054c0d1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tex3
+    second: {fileID: 2100000, guid: 3406247e6a8f974439f50a98358a8923, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
