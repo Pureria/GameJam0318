@@ -52,12 +52,15 @@ namespace ChangeGame.Enemy
             _stateMachine.Initialize(IdleState);
             StatesComp.Initialize(MaxHP);
 
+            
+            SetActiveFalse();
         }
 
-        public void Initialize()
+        public void Initialize(Transform targetTran)
         {
             StatesComp.Initialize(MaxHP);
             _stateMachine.Initialize(IdleState);
+            _goal = targetTran;
             _agent.destination = _goal.position;
             _useEnemy = true;
         }
