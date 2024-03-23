@@ -1,24 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using CorePackage;
 using UnityEngine;
-using CorePackage;
+using System;
 
 namespace ChangeGame.Item
 {
     public class ItemController : MonoBehaviour
     {
+        public Action OnPickUpEvent;
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
                 Core pCore = other.GetComponentInChildren<Core>();
                 if (pCore == null) return;
-                if (pCore.GetCoreComponentBool<ItemPick>(out ItemPick item))
+                if (pCore.GetCoreComponentBool(out ItemPick itemPick))
                 {
-                    item.PickUp();
+                    itemPick.PickUp();
+                    //Destroy(this.gameObject);
+                    OnPickUpEvent?.Invoke();
                 }
-                Destroy(this.gameObject);
             }
         }
     }
