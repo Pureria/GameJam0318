@@ -43,11 +43,13 @@ namespace ChangeGame.Player
         private Movement _movementComp;
         private States _statesComp;
         private Damage _damasgeComp;
+        private ItemPick _itemPick;
         
         public Core _core {get; private set;}
         public Movement MovementComp { get => _movementComp ?? _core.GetCoreComponent(ref _movementComp);}
         public States StatesComp { get => _statesComp ?? _core.GetCoreComponent(ref _statesComp);}
         public Damage DamageComp { get => _damasgeComp ?? _core.GetCoreComponent(ref _damasgeComp);}
+        public ItemPick ItemPickComp { get => _itemPick ?? _core.GetCoreComponent(ref _itemPick);}
         public bool IsSuperPlayer => _helper.IsSuperPlayer;
 
         private void Awake()
@@ -58,9 +60,9 @@ namespace ChangeGame.Player
             IdleState = new PlayerIdleState(this, _infoSO, _inputSO, _stateMachine, _anim, "idle");
             MoveState = new PlayerMoveState(this, _infoSO, _inputSO, _stateMachine, _anim, "move");
             RolLState = new PlayerAvoidState(this, _infoSO, _inputSO, _stateMachine, _anim, "roll");
-            Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1");
-            Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2");
-            Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3");
+            Magic1State = new PlayerMagic1State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic1", _infoSO.Magic1CoolTime);
+            Magic2State = new PlayerMagic2State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic2", _infoSO.Magic2CoolTime);
+            Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3", _infoSO.Magic3CoolTime);
             DeadState = new PlayerDeadState(this, _infoSO, _inputSO, _stateMachine, _anim, "dead");
             
             _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime);
@@ -86,6 +88,7 @@ namespace ChangeGame.Player
         {
             StatesComp.OnDeadEvent += Dead;
             DamageComp.OnDamageEvent += Damage;
+            ItemPickComp.OnPickUpEvent += ItemPick;
             
             _helper.OnChangeModeEvent += ChangeModePlaer;
         }
@@ -94,6 +97,7 @@ namespace ChangeGame.Player
         {
             StatesComp.OnDeadEvent -= Dead;
             DamageComp.OnDamageEvent -= Damage;
+            ItemPickComp.OnPickUpEvent -= ItemPick;
             
             _helper.OnChangeModeEvent -= ChangeModePlaer;
         }
@@ -107,7 +111,10 @@ namespace ChangeGame.Player
 
             _interSO.IsSuperMode = IsSuperPlayer;
             _interSO.CurrentHealth = StatesComp.CurrentHealth;
-            _interSO.NowModeTime = Time.time - _helper.ChangeModeTime;
+            _interSO.NowModeTimeRate = _helper.GetNowModeTimeRate();
+            _interSO.Magic1CoolTimeRate = Magic1State.GetCoolTimeRate();
+            _interSO.Magic2CoolTimeRate = Magic2State.GetCoolTimeRate();
+            _interSO.Magic3CoolTimeRate = Magic3State.GetCoolTimeRate();
             
             _anim.SetBool("isSuperMode", IsSuperPlayer);
         }
@@ -127,6 +134,31 @@ namespace ChangeGame.Player
         {
             if (_isDead) return;
             _stateMachine.FixedUpdate();
+        }
+        private void Dead()
+        {
+            _stateMachine.ChangeState(DeadState);
+            _stateMachine.SetCanChangeState(false);
+            _interSO.OnDeadEvent?.Invoke();
+        }
+
+        private void Damage()
+        {
+            _interSO.OnDamageEvent?.Invoke();
+        }
+
+        private void ItemPick()
+        {
+            //ノーマルモード時のみ残り時間を減少させる
+            if (IsSuperPlayer) return;
+            
+            _helper.SubNowModeTime(_infoSO.ItemSubTime);
+        }
+
+        private void ChangeModePlaer()
+        {
+            if (_helper.IsSuperPlayer) _changeSuperEffect.SetActive(true);
+            else _changeNormalEffect.SetActive(true);
         }
 
         public void AnimationFinishTrigger()
@@ -153,24 +185,6 @@ namespace ChangeGame.Player
             Debug.Log("プレイヤー死亡");
             _interSO.IsDead = true;
             _isDead = true;
-        }
-
-        private void Dead()
-        {
-            _stateMachine.ChangeState(DeadState);
-            _stateMachine.SetCanChangeState(false);
-            _interSO.OnDeadEvent?.Invoke();
-        }
-
-        private void Damage()
-        {
-            _interSO.OnDamageEvent?.Invoke();
-        }
-
-        private void ChangeModePlaer()
-        {
-            if (_helper.IsSuperPlayer) _changeSuperEffect.SetActive(true);
-            else _changeNormalEffect.SetActive(true);
         }
     }
 }
