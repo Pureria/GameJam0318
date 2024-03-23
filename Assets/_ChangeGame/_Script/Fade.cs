@@ -12,9 +12,9 @@ public class Fade : MonoBehaviour
         FadeOut,
     }
 
-    [SerializeField, Header("ƒtƒF[ƒh‚ÌŠÔ")]
+    [SerializeField, Header("ãƒ•ã‚§ãƒ¼ãƒ‰ã®æ™‚é–“")]
     private float _fadeTime;
-    [SerializeField, Header("ƒtƒF[ƒh‚Ìí—Ş")]
+    [SerializeField, Header("ãƒ•ã‚§ãƒ¼ãƒ‰ã®ç¨®é¡")]
     private Mode _mode;
 
     private bool _bFade;
@@ -71,13 +71,14 @@ public class Fade : MonoBehaviour
             _mode = Mode.FadeIn;
             _bFade = false;
             _onFadeComplete.Invoke();
+            _onFadeComplete.RemoveAllListeners();
         }
     }
 
     /// <summary>
-    /// ŒÄ‚Ô‚ÆƒtƒF[ƒhˆ—‚ªn‚Ü‚é
+    /// å‘¼ã¶ã¨ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç†ãŒå§‹ã¾ã‚‹
     /// </summary>
-    /// <param name="listener">ƒtƒF[ƒhˆ—‚ªI‚í‚Á‚½Œã‚ÉŒÄ‚Ño‚µ‚½‚¢ŠÖ”</param>
+    /// <param name="listener">ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç†ãŒçµ‚ã‚ã£ãŸå¾Œã«å‘¼ã³å‡ºã—ãŸã„é–¢æ•°</param>
     public void FadeStart(UnityAction listener)
     {
         if (_bFade) return;
