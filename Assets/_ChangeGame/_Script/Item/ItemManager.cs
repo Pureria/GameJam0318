@@ -25,7 +25,7 @@ namespace ChangeGame.Item
             {
                 _nextSpawnTime = Time.time + Random.Range(_spawnMinInterval, _spawnMaxInterval);
                 if(ItemSpawner.ItemSpawnCount >= _maxItemCount) return;
-                /*
+                /*ｚ
                 foreach (ItemSpawner spawner in _itemSpawners)
                 {
                     if (spawner.SpawnItem()) break;
