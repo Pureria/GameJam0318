@@ -964,6 +964,7 @@ GameObject:
   - component: {fileID: 504175948}
   - component: {fileID: 504175947}
   - component: {fileID: 504175949}
+  - component: {fileID: 504175950}
   m_Layer: 0
   m_Name: FreeLook Camera
   m_TagString: Untagged
@@ -1110,6 +1111,29 @@ MonoBehaviour:
   AutoEnableInputs: 1
   XYAxis: {fileID: -3892644826893490824, guid: 44e02f9b143cb0141bf7d37cab676beb, type: 3}
   ZAxis: {fileID: 0}
+--- !u!114 &504175950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504175946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &541460154
 GameObject:
   m_ObjectHideFlags: 0
@@ -1797,6 +1821,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58a8bc779a7360f44a9dc44ab45dac5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1009401064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6872221562553888882, guid: f1a54745a17422c40b55e19ab4e1f8d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4537512091979042936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1009401072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009401064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 2
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.2
+    m_ImpulseType: 3
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+    m_AmplitudeGain: 3
+    m_FrequencyGain: 3
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.1
+      m_DecayTime: 0.1
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 2, y: 1, z: 0}
 --- !u!1001 &1018372438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4086,7 +4169,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6872221562553888882, guid: f1a54745a17422c40b55e19ab4e1f8d0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1009401072}
   m_SourcePrefab: {fileID: 100100000, guid: f1a54745a17422c40b55e19ab4e1f8d0, type: 3}
 --- !u!1001 &4647367558511702011
 PrefabInstance:
