@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraShake : MonoBehaviour
+public class CameraShape : MonoBehaviour
 {
     //プレイヤーが攻撃したときにカメラを揺らす
      
     
 
-    private void Shake()
+    private void Shape()
     {
         CinemachineImpulseSource impulseSource = GetComponent<CinemachineImpulseSource>();
         impulseSource.GenerateImpulse();
