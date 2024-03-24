@@ -3843,7 +3843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fade: {fileID: 370429446}
-  _nextSceneName: TitleTransitionTestScene
+  _nextSceneName: GameScene
 --- !u!1 &1970139021
 GameObject:
   m_ObjectHideFlags: 0
@@ -4104,7 +4104,7 @@ PrefabInstance:
     - target: {fileID: 897873207511195177, guid: 94293c833b381b14280ddace71010193,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7027003531416671171, guid: 94293c833b381b14280ddace71010193,
         type: 3}

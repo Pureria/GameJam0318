@@ -8,7 +8,7 @@ using UnityEngine.Serialization;
 
 public class AudioManager : MonoBehaviour
 {
-    public AudioManager Instance { get; private set; }
+    public static AudioManager Instance { get; private set; }
         
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private OptionSO _optionSO;
