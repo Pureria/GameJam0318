@@ -153,6 +153,8 @@ namespace ChangeGame.Player
 
         private void Damage()
         {
+            if (_isDead) return;
+            
             _interSO.OnDamageEvent?.Invoke();
             _cameraImpulseSo.OnCallMediumImpulseEvent?.Invoke();
         }
