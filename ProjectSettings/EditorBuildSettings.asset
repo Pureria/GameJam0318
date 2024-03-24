@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_ChangeGame/Scenes/TitleTransitionTestScene.unity
     guid: d30e5cfa87944e147ad241af227e3b92
+  - enabled: 1
+    path: Assets/_ChangeGame/Scenes/BuildScene/FinalScoreScene.unity
+    guid: 928888b713390684b84a58c5c867b956
   m_configObjects: {}
