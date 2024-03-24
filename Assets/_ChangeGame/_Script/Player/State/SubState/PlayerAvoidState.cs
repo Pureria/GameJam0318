@@ -18,6 +18,7 @@ namespace ChangeGame.Player
             base.Enter();
             
             _player.DamageComp.SetIsInvisible(true);
+            _player.StartAvoidSE();
         }
 
         public override void Exit()

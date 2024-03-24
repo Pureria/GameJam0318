@@ -18,5 +18,6 @@ MonoBehaviour:
   ChangeSuperSE: {fileID: 8300000, guid: 476a0cef269eed149beae8de62c66ef7, type: 3}
   CountDownLow: {fileID: 8300000, guid: f89fe3615444b6243999197b713f0107, type: 3}
   CountDownHigh: {fileID: 8300000, guid: 2c9cc9e1d98a6334ea58ec7770365694, type: 3}
+  Avoid: {fileID: 8300000, guid: a59e7dd1777f4c04cb45aa06f69f7d65, type: 3}
   DamageSource: {fileID: 0}
   PlayerModeSource: {fileID: 0}

@@ -13,6 +13,7 @@ namespace ChangeGame.Player
         public AudioClip ChangeSuperSE;
         public AudioClip CountDownLow;
         public AudioClip CountDownHigh;
+        public AudioClip Avoid;
 
         [HideInInspector] public AudioSource DamageSource;
         [HideInInspector] public AudioSource PlayerModeSource;

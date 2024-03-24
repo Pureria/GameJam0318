@@ -60,6 +60,7 @@ public class Fade : MonoBehaviour
             _mode = Mode.FadeOut;
         _bFade = false;
         _onFadeComplete.Invoke();
+        _onFadeComplete.RemoveAllListeners();
         }
     }
 

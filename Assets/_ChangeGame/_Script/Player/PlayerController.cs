@@ -36,6 +36,7 @@ namespace ChangeGame.Player
         [Header("Audio")] [SerializeField] private PlayerAudioSO _audioSO;
         [SerializeField] private AudioSource _audioDamageSource;
         [SerializeField] private AudioSource _audioModeSource;
+        [SerializeField] private AudioSource _footStepSource;
         
         
 
@@ -221,6 +222,21 @@ namespace ChangeGame.Player
             _interSO.IsDead = true;
             _isDead = true;
             _managerSo.OnPlayerDeadEvent?.Invoke();
+        }
+        
+        public void StartFootStep()
+        {
+            _footStepSource.Play();
+        }
+
+        public void StopFootStep()
+        {
+            _footStepSource.Stop();
+        }
+
+        public void StartAvoidSE()
+        {
+            _audioDamageSource.PlayOneShot(_audioSO.Avoid);
         }
     }
 }
