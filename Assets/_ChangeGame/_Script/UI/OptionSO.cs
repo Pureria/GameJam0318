@@ -11,7 +11,7 @@ namespace ChangeGame.UI
     {
         public float MouseSensivity = 0f;
         public float MasterVolume = 0.5f;
-        public float BGMVolume = 0.5f;
+        public float BGMVolume = 0.25f;
         public float SEVolume = 0.5f;
 
         public Action OnChangeAnyVolumeEvent;

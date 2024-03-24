@@ -12,12 +12,12 @@ namespace ChangeGame.UI
 
         public void SetMouseSensivity(float value)
         {
-            _optionSO.MouseSensivity = Mathf.Clamp(value, -1, 1);
+            _optionSO.MouseSensivity = Mathf.Clamp(value, -1f, 1f);
         }
 
         public void SetMasterVolume(float value)
         {
-            _optionSO.MasterVolume = Mathf.Clamp01(value);
+            _optionSO.MasterVolume = Mathf.Clamp(value, 0f, 0.5f);
             _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
 
