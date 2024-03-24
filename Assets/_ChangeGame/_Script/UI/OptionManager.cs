@@ -18,16 +18,19 @@ namespace ChangeGame.UI
         public void SetMasterVolume(float value)
         {
             _optionSO.MasterVolume = Mathf.Clamp01(value);
+            _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
 
         public void SetBGMVolume(float value)
         {
             _optionSO.BGMVolume = Mathf.Clamp01(value);
+            _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
         
         public void SetSEVolume(float value)
         {
             _optionSO.SEVolume = Mathf.Clamp01(value);
+            _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
 
 

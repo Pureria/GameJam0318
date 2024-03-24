@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace ChangeGame.UI
 {
@@ -12,6 +13,8 @@ namespace ChangeGame.UI
         public float MasterVolume = 0.5f;
         public float BGMVolume = 0.5f;
         public float SEVolume = 0.5f;
+
+        public Action OnChangeAnyVolumeEvent;
     }
 
 }
