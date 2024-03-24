@@ -6,6 +6,8 @@ namespace ChangeGame.AudioSpectrum
 {
     public class AudioSpectrumMaterialSetter : MonoBehaviour
     {
+        private static AudioSpectrumMaterialSetter Instance;
+        
         [SerializeField] private AudioSpectrumSO audioSpectrumSO;
         [SerializeField] private GetAudioData audioData;
         //[SerializeField] private Material mat;
@@ -14,6 +16,19 @@ namespace ChangeGame.AudioSpectrum
         [SerializeField] private float amp = 10;
 
         private int res;
+
+        private void Awake()
+        {
+            if (Instance == null)
+            {
+                Instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+        
         private void OnEnable()
         {
             res = (int)audioData.FFT_res;

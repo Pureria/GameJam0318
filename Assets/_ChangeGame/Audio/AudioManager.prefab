@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3166495534212486596}
   - component: {fileID: 3092239411275658053}
   - component: {fileID: 6011274108233702639}
+  - component: {fileID: 59832504706629634}
+  - component: {fileID: 2672567494516742799}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -63,7 +65,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -5022716692000024185, guid: a064f16c333a4da4b9b9c4b63052c174,
     type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5a87308491d4a844f8d7f0025e0a6a03, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -149,3 +151,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &59832504706629634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560414841434567503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3eb9262455a04346813d7e8b97b12d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FFT_res: 512
+  source: {fileID: 6011274108233702639}
+  dataOffset: 0
+  FFT_wf: 1
+  spectrumData: []
+--- !u!114 &2672567494516742799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4560414841434567503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 693e2dd8aeda7be44bc43b31c1bbdf92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSpectrumSO: {fileID: 11400000, guid: 53419194a4619634195bdb8d2577435c, type: 2}
+  audioData: {fileID: 59832504706629634}
+  indices: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  amp: 10

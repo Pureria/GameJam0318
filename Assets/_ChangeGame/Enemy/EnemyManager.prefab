@@ -124,6 +124,8 @@ MonoBehaviour:
   _spawnInterval: 5
   _enemyParent: {fileID: 3377976245225218390}
   _gameManagerSO: {fileID: 11400000, guid: 08f262a45971bdf4896a64dc348d08b0, type: 2}
+  _scoreSO: {fileID: 11400000, guid: 6a1f48b937c3b3d4c8d383d66f51cbe2, type: 2}
+  _addCount: 5
 --- !u!1 &896060662820485098
 GameObject:
   m_ObjectHideFlags: 0

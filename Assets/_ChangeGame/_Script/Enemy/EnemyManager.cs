@@ -15,6 +15,8 @@ namespace ChangeGame.Enemy
         [SerializeField] private float _spawnInterval = 40.0f;
         [SerializeField] private Transform _enemyParent;
         [SerializeField] private GameManagerSO _gameManagerSO;
+        [SerializeField] private ScoreSO _scoreSO;
+        [SerializeField] private int _addCount = 5;
         
         private float _nextSpawnTime;
         private List<EnemyController> _EnemyInstaces = new List<EnemyController>(); //¶¬‚³‚ê‚½“G‚ÌTransform‚ğŠi”[‚·‚éƒŠƒXƒg
@@ -55,8 +57,12 @@ namespace ChangeGame.Enemy
         {
             if (_nextSpawnTime <= Time.time)
             {
+                int spawnCount = (int)(_scoreSO.EliminateCount / _addCount) + 1;
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    SpawnEnemy();
+                }
                 _nextSpawnTime = Time.time + _spawnInterval;
-                SpawnEnemy();
             }
         }
 

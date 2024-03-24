@@ -7,6 +7,8 @@ namespace ChangeGame.AudioSpectrum
     [RequireComponent(typeof(AudioSource))]
     public class GetAudioData : MonoBehaviour
     {
+        private static GetAudioData instance;
+        
         public enum FFT_Resolution
         {
             _8192 = 8192, _4096 = 4096, _2048 = 2048, _1024 = 1024, _512 = 512, _256 = 256, _128 = 128, _64 = 64
@@ -22,6 +24,18 @@ namespace ChangeGame.AudioSpectrum
         [HideInInspector] public float[] spectrumData = null;
         private float[] data;
 
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+        
         private void OnEnable()
         {
             //準備
