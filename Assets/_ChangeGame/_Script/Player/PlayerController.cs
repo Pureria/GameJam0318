@@ -7,6 +7,7 @@ using ChangeGame.Manager;
 using UnityEngine;
 using CorePackage;
 using State;
+using UnityEngine.Serialization;
 
 namespace ChangeGame.Player
 {
@@ -31,6 +32,12 @@ namespace ChangeGame.Player
         
         [Header("Component")] 
         [SerializeField] private Animator _anim;
+
+        [Header("Audio")] [SerializeField] private PlayerAudioSO _audioSO;
+        [SerializeField] private AudioSource _audioDamageSource;
+        [SerializeField] private AudioSource _audioModeSource;
+        
+        
 
         private StateMachine _stateMachine;
         #region State
@@ -72,7 +79,7 @@ namespace ChangeGame.Player
             Magic3State = new PlayerMagic3State(this, _infoSO, _inputSO, _stateMachine, _anim, "magic3", _infoSO.Magic3CoolTime);
             DeadState = new PlayerDeadState(this, _infoSO, _inputSO, _stateMachine, _anim, "dead");
             
-            _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime);
+            _helper = new PCHelper(_infoSO.NormalModeTime, _infoSO.SuperModeTime, _audioSO);
             _isDead = false;
         }
 
@@ -89,6 +96,9 @@ namespace ChangeGame.Player
             _interSO.MaxSuperModeTime = _infoSO.SuperModeTime;
             _interSO.MaxNormalModeTime = _infoSO.NormalModeTime;
             _interSO.MaxHealth = _infoSO.MaxHealth;
+            
+            _audioSO.DamageSource = _audioDamageSource;
+            _audioSO.PlayerModeSource = _audioModeSource;
         }
 
         private void OnEnable()
@@ -149,6 +159,7 @@ namespace ChangeGame.Player
             _stateMachine.ChangeState(DeadState);
             _stateMachine.SetCanChangeState(false);
             _interSO.OnDeadEvent?.Invoke();
+            _audioSO.DamageSource.PlayOneShot(_audioSO.DeadSE);
         }
 
         private void Damage()
@@ -157,6 +168,7 @@ namespace ChangeGame.Player
             
             _interSO.OnDamageEvent?.Invoke();
             _cameraImpulseSo.OnCallMediumImpulseEvent?.Invoke();
+            _audioSO.DamageSource.PlayOneShot(_audioSO.DamageSE);
         }
 
         private void ItemPick()

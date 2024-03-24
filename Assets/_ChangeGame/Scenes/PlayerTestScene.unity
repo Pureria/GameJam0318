@@ -440,7 +440,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0155080585, y: 0.9793847, z: -0.18364333, w: 0.08270572}
+  m_LocalRotation: {x: 0.015508044, y: 0.9793847, z: -0.18364333, w: 0.082705654}
   m_LocalPosition: {x: -0.5030918, y: 2.5, z: 2.9575157}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2699,12 +2699,22 @@ PrefabInstance:
     - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.082705714
+      value: 0.08270568
       objectReference: {fileID: 0}
     - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.015508055
+      value: 0.015508048
+      objectReference: {fileID: 0}
+    - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9793847
+      objectReference: {fileID: 0}
+    - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.18364333
       objectReference: {fileID: 0}
     - target: {fileID: 476043699311931359, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
@@ -2759,32 +2769,42 @@ PrefabInstance:
     - target: {fileID: 2738411326264293913, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.08222422
+      value: 0.082224175
       objectReference: {fileID: 0}
     - target: {fileID: 2738411326264293913, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.01788614
+      value: 0.01788613
+      objectReference: {fileID: 0}
+    - target: {fileID: 2738411326264293913, guid: 14de2d13486cfea4a990ea2b4b2206f4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9736829
       objectReference: {fileID: 0}
     - target: {fileID: 2738411326264293913, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.21180414
+      value: -0.21180412
       objectReference: {fileID: 0}
     - target: {fileID: 3533903000901731371, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.08311594
+      value: 0.083115906
       objectReference: {fileID: 0}
     - target: {fileID: 3533903000901731371, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.013132914
+      value: 0.013132906
+      objectReference: {fileID: 0}
+    - target: {fileID: 3533903000901731371, guid: 14de2d13486cfea4a990ea2b4b2206f4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.9842427
       objectReference: {fileID: 0}
     - target: {fileID: 3533903000901731371, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.1555174
+      value: -0.15551738
       objectReference: {fileID: 0}
     - target: {fileID: 6001945806329547648, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
@@ -3098,6 +3118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606477045718579469, guid: 07162b2afa8680e49aaa2e89fba1d684,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4488,12 +4513,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: newPlayer
       objectReference: {fileID: 0}
-    - target: {fileID: 3561023152072827961, guid: 2a6ef7dcd0124834c82df655ac658ab3,
-        type: 3}
-      propertyPath: _cameraImpulseSo
-      value: 
-      objectReference: {fileID: 11400000, guid: 58de44a980674fe449cc4df00f18a097,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
