@@ -9,11 +9,11 @@ namespace ChangeGame.CameraImpulse
     public class CameraImpulseSO : ScriptableObject
     {
         public Action OnCallSmallImpulseEvent;
+        public Action<float> OnCallSmallImpulseEventWithTime;
         public Action OnCallMediumImpulseEvent;
+        public Action<float> OnCallMediumImpulseEventWithTime;
         public Action OnCallLargeImpulseEvent;
-
-    
-
+        public Action<float> OnCallLargeImpulseEventWithTime;
     }
 
 }

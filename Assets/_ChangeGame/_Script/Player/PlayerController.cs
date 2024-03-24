@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ChangeGame.CameraImpulse;
 using ChangeGame.Input;
 using ChangeGame.Manager;
 using UnityEngine;
@@ -14,7 +15,9 @@ namespace ChangeGame.Player
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
-        [Header("Manager")] [SerializeField] private GameManagerSO _managerSo;
+        [Header("Manager")] 
+        [SerializeField] private GameManagerSO _managerSo;
+        [SerializeField] private CameraImpulseSO _cameraImpulseSo;
         
         [Header("Player Info")] 
         [SerializeField] private PlayerInfoSO _infoSO;
@@ -151,6 +154,7 @@ namespace ChangeGame.Player
         private void Damage()
         {
             _interSO.OnDamageEvent?.Invoke();
+            _cameraImpulseSo.OnCallMediumImpulseEvent?.Invoke();
         }
 
         private void ItemPick()
