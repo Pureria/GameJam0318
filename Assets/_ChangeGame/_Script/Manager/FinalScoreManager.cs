@@ -38,11 +38,11 @@ namespace ChangeGame.Manager
                 .OnComplete(() =>
                 {
                     //Dotweenでエリミネート数を表示
-                    DOTween.To(() => 0, x => _eliminatText.text = x.ToString(), _scoreSO.EliminateCount, _scoreTweenTime)
+                    DOTween.To(() => 0, x => _eliminatText.text = x.ToString("F0"), _scoreSO.EliminateCount, _scoreTweenTime)
                         .OnComplete(() =>
                         {
                             //Dotweenでスコアを表示
-                            DOTween.To(() => 0, x => _scoreText.text = x.ToString(), _scoreSO.Score, _scoreTweenTime)
+                            DOTween.To(() => 0, x => _scoreText.text = x.ToString("F0"), _scoreSO.Score, _scoreTweenTime)
                                 .OnComplete(() =>
                                 {
                                     _anim.SetTrigger(_animNextTriggerName);

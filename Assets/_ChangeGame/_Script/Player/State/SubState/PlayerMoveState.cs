@@ -12,6 +12,18 @@ namespace ChangeGame.Player
         {
         }
         
+        public override void Enter()
+        {
+            base.Enter();
+            _player.StartFootStep();
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _player.StopFootStep();
+        }
+        
         public override void LogicUpdate()
         {
             base.LogicUpdate();

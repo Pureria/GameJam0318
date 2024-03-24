@@ -19,6 +19,15 @@ namespace ChangeGame.Manager
         private void Start()
         {
             _fade.FadeStart(GameStart);
+            _scoreSO.Score = 0;
+        }
+
+        private void Update()
+        {
+            if (!_isGame) return;
+            //_scoreSO.Score = (GetEliminateCount() * 100) + (GetSurviveTime() * 10);
+            _scoreSO.SurviveTime = GetSurviveTime();
+            _scoreSO.EliminateCount = GetEliminateCount();
         }
 
         private void OnEnable()
@@ -47,6 +56,8 @@ namespace ChangeGame.Manager
             _eliminateCount = 0;
             _startTime = Time.time;
             _isGame = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
         private void GameEnd()
@@ -54,7 +65,10 @@ namespace ChangeGame.Manager
             _gameManagerSO.OnGameEndEvent?.Invoke();
             _scoreSO.SurviveTime = GetSurviveTime();
             _scoreSO.EliminateCount = GetEliminateCount();
+            _scoreSO.Score = (GetEliminateCount() * 100) + (GetSurviveTime() * 10);
             _isGame = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             
             //次のシーンへ遷移
             _fade.FadeStart(() =>
