@@ -7,6 +7,8 @@ namespace ChangeGame.Item
     public class ItemController : MonoBehaviour
     {
         public Action OnPickUpEvent;
+        [SerializeField] private AudioSource _seSource;
+        [SerializeField] private AudioClip _pickUpSE;
         
         private void OnTriggerEnter(Collider other)
         {
@@ -18,6 +20,7 @@ namespace ChangeGame.Item
                 {
                     itemPick.PickUp();
                     //Destroy(this.gameObject);
+                    _seSource.PlayOneShot(_pickUpSE);
                     OnPickUpEvent?.Invoke();
                 }
             }
