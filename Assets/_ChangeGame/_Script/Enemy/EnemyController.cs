@@ -3,6 +3,7 @@ using CorePackage;
 using State;
 using System.Collections;
 using System.Collections.Generic;
+using ChangeGame.Manager;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -16,6 +17,7 @@ namespace ChangeGame.Enemy
         [SerializeField] private Transform _checkAttackPosition;
         [SerializeField] private float _checkAttackRadius;
         [SerializeField] private float MaxHP;
+        [SerializeField] GameManagerSO _gameManagerSO;
 
         private State.StateMachine _stateMachine;
         private NavMeshAgent _agent;
@@ -52,12 +54,15 @@ namespace ChangeGame.Enemy
             _stateMachine.Initialize(IdleState);
             StatesComp.Initialize(MaxHP);
 
+            
+            SetActiveFalse();
         }
 
-        public void Initialize()
+        public void Initialize(Transform targetTran)
         {
             StatesComp.Initialize(MaxHP);
             _stateMachine.Initialize(IdleState);
+            _goal = targetTran;
             _agent.destination = _goal.position;
             _useEnemy = true;
         }
@@ -158,6 +163,7 @@ namespace ChangeGame.Enemy
 
         public void SetActiveFalse()
         {
+            _gameManagerSO.OnAddEliminateCountEvent?.Invoke();
             this.gameObject.SetActive(false);
         }
 

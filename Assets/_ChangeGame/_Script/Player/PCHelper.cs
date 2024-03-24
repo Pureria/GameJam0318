@@ -13,10 +13,10 @@ namespace ChangeGame.Player
         private float _superPlayerInterval;
         private float _changeModeTime;
 
+        public float ChangeModeTime => _changeModeTime;
         public bool IsSuperPlayer => _isSuperPlayer;
 
-        public Action OnChangeSuperEvent;
-        public Action OnChangeNormalEvent;
+        public Action OnChangeModeEvent;
         
         public PCHelper(float normalTime, float superTime)
         {
@@ -67,9 +67,30 @@ namespace ChangeGame.Player
                 _changeModeTime = Time.time;
                 SetSuperPlayer(!_isSuperPlayer);
 
-                if (_isSuperPlayer) OnChangeSuperEvent?.Invoke();
-                else OnChangeNormalEvent?.Invoke();
+                OnChangeModeEvent?.Invoke();
             }
+        }
+
+        /// <summary>
+        /// 現在のモードの残り時間を減らす
+        /// </summary>
+        /// <param name="boostTime">減らす時間</param>
+        public void SubNowModeTime(float boostTime)
+        {
+            _changeModeTime -= boostTime;
+        }
+
+        /// <summary>
+        /// 現在のモードの残り時間の割合を返す
+        /// </summary>
+        /// <returns>残り時間の割合</returns>
+        public float GetNowModeTimeRate()
+        {
+            float interval = 0;
+            //現在のモードの残り時間の割合を返す
+            if (_isSuperPlayer) interval = _superPlayerInterval;
+            else interval = _normalPlayerInterval;
+            return Mathf.Clamp01((Time.time - _changeModeTime) / interval);
         }
     }
 }
