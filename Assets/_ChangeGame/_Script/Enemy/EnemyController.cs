@@ -18,6 +18,11 @@ namespace ChangeGame.Enemy
         [SerializeField] private float _checkAttackRadius;
         [SerializeField] private float MaxHP;
         [SerializeField] GameManagerSO _gameManagerSO;
+        
+        [Header("Audio")]
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _deadSE;
+        [SerializeField] private AudioClip _damageSE;
 
         private State.StateMachine _stateMachine;
         private NavMeshAgent _agent;
@@ -158,6 +163,7 @@ namespace ChangeGame.Enemy
             if (_stateMachine.CurrentState != DeadState)
             {
                 _stateMachine.ChangeState(DeadState);
+                _audioSource.PlayOneShot(_deadSE);
             }
         }
 
@@ -172,6 +178,7 @@ namespace ChangeGame.Enemy
             if (_stateMachine.CurrentState != DeadState)
             {
                 _stateMachine.ChangeState(DamageState);
+                _audioSource.PlayOneShot(_damageSE);
             }
         }
 
