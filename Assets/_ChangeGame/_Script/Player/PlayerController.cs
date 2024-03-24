@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using ChangeGame.Input;
+using ChangeGame.Manager;
 using UnityEngine;
 using CorePackage;
 using State;
@@ -13,6 +14,8 @@ namespace ChangeGame.Player
     /// </summary>
     public class PlayerController : MonoBehaviour
     {
+        [Header("Manager")] [SerializeField] private GameManagerSO _managerSo;
+        
         [Header("Player Info")] 
         [SerializeField] private PlayerInfoSO _infoSO;
 
@@ -38,6 +41,7 @@ namespace ChangeGame.Player
         #endregion
 
         private bool _isDead;
+        private bool _isGame;
         private PCHelper _helper;
         
         private Movement _movementComp;
@@ -89,8 +93,9 @@ namespace ChangeGame.Player
             StatesComp.OnDeadEvent += Dead;
             DamageComp.OnDamageEvent += Damage;
             ItemPickComp.OnPickUpEvent += ItemPick;
-            
             _helper.OnChangeModeEvent += ChangeModePlaer;
+            _managerSo.OnGameStartEvent += GameStart;
+            _managerSo.OnGameEndEvent += GameEnd;
         }
 
         private void OnDisable()
@@ -98,13 +103,14 @@ namespace ChangeGame.Player
             StatesComp.OnDeadEvent -= Dead;
             DamageComp.OnDamageEvent -= Damage;
             ItemPickComp.OnPickUpEvent -= ItemPick;
-            
             _helper.OnChangeModeEvent -= ChangeModePlaer;
+            _managerSo.OnGameStartEvent -= GameStart;
+            _managerSo.OnGameEndEvent -= GameEnd;
         }
 
         private void Update()
         {
-            if (_isDead) return;
+            if (_isDead || !_isGame) return;
             _stateMachine.LogicUpdate();
             
             _helper.Update();
@@ -132,7 +138,7 @@ namespace ChangeGame.Player
 
         private void FixedUpdate()
         {
-            if (_isDead) return;
+            if (_isDead || !_isGame) return;
             _stateMachine.FixedUpdate();
         }
         private void Dead()
@@ -161,6 +167,17 @@ namespace ChangeGame.Player
             else _changeNormalEffect.SetActive(true);
         }
 
+        private void GameStart()
+        {
+            _isGame = true;
+            _managerSo.OnSetPlayerTransformEvent?.Invoke(transform);
+        }
+
+        private void GameEnd()
+        {
+            _isGame = false;
+        }
+
         public void AnimationFinishTrigger()
         {
             _stateMachine.CurrentState.AnimationFinishTrigger();
@@ -185,6 +202,7 @@ namespace ChangeGame.Player
             Debug.Log("プレイヤー死亡");
             _interSO.IsDead = true;
             _isDead = true;
+            _managerSo.OnPlayerDeadEvent?.Invoke();
         }
     }
 }
