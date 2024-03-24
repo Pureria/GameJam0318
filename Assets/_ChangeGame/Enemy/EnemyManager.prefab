@@ -123,7 +123,7 @@ MonoBehaviour:
   _maxEnemyCount: 25
   _spawnInterval: 5
   _enemyParent: {fileID: 3377976245225218390}
-  _goal: {fileID: 0}
+  _gameManagerSO: {fileID: 11400000, guid: 08f262a45971bdf4896a64dc348d08b0, type: 2}
 --- !u!1 &896060662820485098
 GameObject:
   m_ObjectHideFlags: 0

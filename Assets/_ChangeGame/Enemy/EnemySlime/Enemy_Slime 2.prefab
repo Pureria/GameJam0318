@@ -54,8 +54,9 @@ MonoBehaviour:
   _animator: {fileID: 755803519218533689}
   _goal: {fileID: 0}
   _checkAttackPosition: {fileID: 472569052149967927}
-  _checkAttackRadius: 1
+  _checkAttackRadius: 0.5
   MaxHP: 100
+  _gameManagerSO: {fileID: 11400000, guid: 08f262a45971bdf4896a64dc348d08b0, type: 2}
 --- !u!95 &755803519218533689
 Animator:
   serializedVersion: 5

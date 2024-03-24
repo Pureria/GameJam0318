@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ChangeGame.Manager;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -13,10 +14,8 @@ namespace ChangeGame.Enemy
         [SerializeField] private int _maxEnemyCount = 50;   //¶¬‚·‚é“G‚ÌÅ‘å”
         [SerializeField] private float _spawnInterval = 40.0f;
         [SerializeField] private Transform _enemyParent;
-
-        [Header("Debug")] 
-        [SerializeField] private Transform _goal;
-
+        [SerializeField] private GameManagerSO _gameManagerSO;
+        
         private float _nextSpawnTime;
         private List<EnemyController> _EnemyInstaces = new List<EnemyController>(); //¶¬‚³‚ê‚½“G‚ÌTransform‚ğŠi”[‚·‚éƒŠƒXƒg
         private List<Transform> _spawnPoints = new List<Transform>(); //SpawnPoint‚ÌTransform‚ğŠi”[‚·‚éƒŠƒXƒg
@@ -72,7 +71,7 @@ namespace ChangeGame.Enemy
                     _EnemyInstaces[i].transform.position = _spawnPoints[index].transform.position;
                     _EnemyInstaces[i].gameObject.SetActive(true);
                     //TODO::ƒvƒŒƒCƒ„[‚ÌTransform‚ğ“n‚·‚æ‚¤‚É
-                    _EnemyInstaces[i].Initialize(_goal.transform);
+                    _EnemyInstaces[i].Initialize(_gameManagerSO.OnGetPlayerTransformEvent());
                     break;
                 }
             }  
