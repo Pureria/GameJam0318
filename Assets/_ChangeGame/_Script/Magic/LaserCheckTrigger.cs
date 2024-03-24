@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ChangeGame.CameraImpulse;
 using UnityEngine;
 using UnityEngine.Playables;
 using CorePackage;
@@ -8,6 +9,9 @@ namespace ChangeGame.Magic
 {
     public class LaserCheckTrigger : MonoBehaviour
     {
+        [SerializeField] private CameraImpulseSO _cameraImpulseSo;
+        [SerializeField] private float _impulseTime = 0.1f;
+        
         [SerializeField] private PlayableDirector _playableDirector;
         [SerializeField] private float _damageAmount = 30.0f;
         
@@ -98,6 +102,11 @@ namespace ChangeGame.Magic
         public void SetIsAttack(bool isAttack)
         {
             _isNowAttack = isAttack;
+        }
+
+        public void CallImpulse()
+        {
+            _cameraImpulseSo.OnCallMediumImpulseEventWithTime?.Invoke(_impulseTime);
         }
     }
 }

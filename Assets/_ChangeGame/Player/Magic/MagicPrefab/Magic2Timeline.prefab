@@ -111,6 +111,7 @@ MonoBehaviour:
     m_Signals:
     - {fileID: 11400000, guid: b7d3883a932cc78449585f7fe79feb0b, type: 2}
     - {fileID: 11400000, guid: 706700a8b2dbfac418ae137cebbb3a29, type: 2}
+    - {fileID: 11400000, guid: c2a96f8491701a3449a4f7751a8ad83f, type: 2}
     m_Events:
     - m_PersistentCalls:
         m_Calls:
@@ -140,6 +141,20 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2597877318276399279}
+          m_TargetAssemblyTypeName: ChangeGame.Magic.MagicCircleCheckTrigger, Assembly-CSharp
+          m_MethodName: CallImpulse
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2597877318276399279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f298169073572b479a8999f8f8f8210, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cameraImpulseSO: {fileID: 11400000, guid: 58de44a980674fe449cc4df00f18a097, type: 2}
+  _impulseTime: 0.1
   _playableDirector: {fileID: 1188840547725183781}
   _damageAmount: 60
   _checkRadius: 4.41
