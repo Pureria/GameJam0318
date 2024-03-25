@@ -10,6 +10,16 @@ namespace ChangeGame.UI
         [SerializeField] private OptionSO _optionSO;
         [SerializeField] private string _nextSceneName = "TitleScene";
 
+
+        private void Start()
+        {
+            _optionSO.MouseSensivity = 0f;
+            _optionSO.MasterVolume = 0.5f;
+            _optionSO.BGMVolume = 0.5f;
+            _optionSO.SEVolume = 0.5f;
+        }
+   
+
         public void SetMouseSensivity(float value)
         {
             _optionSO.MouseSensivity = Mathf.Clamp(value, -1f, 1f);
@@ -23,7 +33,7 @@ namespace ChangeGame.UI
 
         public void SetBGMVolume(float value)
         {
-            _optionSO.BGMVolume = Mathf.Clamp01(value);
+            _optionSO.BGMVolume = Mathf.Clamp(value, 0.8f, 1f);
             _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
         
