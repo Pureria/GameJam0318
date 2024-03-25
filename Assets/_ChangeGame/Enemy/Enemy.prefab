@@ -87,6 +87,10 @@ MonoBehaviour:
   _checkAttackPosition: {fileID: 5938938473709432778}
   _checkAttackRadius: 1
   MaxHP: 100
+  _gameManagerSO: {fileID: 0}
+  _audioSource: {fileID: 0}
+  _deadSE: {fileID: 0}
+  _damageSE: {fileID: 0}
 --- !u!95 &6033785412704906416
 Animator:
   serializedVersion: 5
