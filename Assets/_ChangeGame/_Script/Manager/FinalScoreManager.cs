@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.SceneManagement;
+using ChangeGame.Scene;
 
 namespace ChangeGame.Manager
 {
@@ -11,7 +11,7 @@ namespace ChangeGame.Manager
         [SerializeField] private ScoreSO _scoreSO;
         [SerializeField] private Animator _anim;
         [SerializeField] private string _animNextTriggerName;
-        [SerializeField] private Fade _fade;
+        //[SerializeField] private Fade _fade;
         [SerializeField] private float _scoreTweenTime = 1.0f;
         [SerializeField] private float _nextScoreTweenTime = 0.5f;
         [SerializeField] private string _nextSceneName;
@@ -21,14 +21,31 @@ namespace ChangeGame.Manager
         [SerializeField] private TMPro.TextMeshProUGUI _eliminatText;
         [SerializeField] private TMPro.TextMeshProUGUI _scoreText;
         
+        [Header("Scene Change Info")]
+        [SerializeField] private int _nextSceneIndex;  //遷移後のシーン番号
+        [SerializeField] private SceneChangeEffect _sceneChangeEffect = SceneChangeEffect.Fade;
+        [SerializeField] private float _fadeTime;
+
+        private bool _endScoreTween;
+        
         private void Start()
         {
-            _fade.FadeStart(StartScoreTween);
+            //_fade.FadeStart(StartScoreTween);
+            _endScoreTween = false;
             
             //テキストを初期化
             _timeText.text = "";
             _eliminatText.text = "";
             _scoreText.text = "";
+        }
+
+        private void Update()
+        {
+            if (!SceneManager._instance.LoadedScene && !_endScoreTween)
+            {
+                _endScoreTween = true;
+                StartScoreTween();
+            }
         }
 
         private void StartScoreTween()
@@ -46,6 +63,7 @@ namespace ChangeGame.Manager
                                 .OnComplete(() =>
                                 {
                                     _anim.SetTrigger(_animNextTriggerName);
+                                    _endScoreTween = true;
                                 });
                         });
                 });
@@ -53,12 +71,9 @@ namespace ChangeGame.Manager
 
         public void AnimationFinish()
         {
-            Debug.Log("アニメーション終了");
-            _fade.FadeStart(() =>
-            {
-                //シーン遷移
-                SceneManager.LoadScene(_nextSceneName);
-            });
+            //Debug.Log("アニメーション終了");
+            //シーン遷移
+            SceneManager.ChangeSceneWait(_nextSceneIndex, _sceneChangeEffect, _fadeTime);
         }
     }
 }

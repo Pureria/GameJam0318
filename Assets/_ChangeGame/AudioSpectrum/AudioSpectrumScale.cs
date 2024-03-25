@@ -18,6 +18,11 @@ namespace ChangeGame.AudioSpectrum
         {
             _rectTran = GetComponent<RectTransform>();
             _isPlaying = _PlayOnAwake;
+
+            if (AudioSpectrumMaterialSetter.Instance != null)
+            {
+                _audioSpectrumSO = AudioSpectrumMaterialSetter.Instance.AudioSpectrumSO;
+            }
         }
         
         private void Update()

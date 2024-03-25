@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ChangeGame.AudioSpectrum;
 using ChangeGame.UI;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -14,31 +15,59 @@ public class AudioManager : MonoBehaviour
         [SerializeField] private OptionSO _optionSO;
         [SerializeField] private AudioSource _bgmSource;
         [SerializeField] private List<AudioClip> _audioClips = new List<AudioClip>();
+        
+        [Header("OptionSOの初期値")]
+        [SerializeField] private float _masterVolume = 0.8f;
+        [SerializeField] private float _bgmVolume = 0.5f;
+        [SerializeField] private float _seVolume = 0.6f;
+        [SerializeField] private float _mouseSensivity = 0f;
 
         private bool _isPlayerBGM;
         private int _nowBGMIndex;
+        private GetAudioData _getAudioData;
+        
         
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(this);
             }
             else
             {
-                Destroy(this);
+                Destroy(this.gameObject);
             }
+            
+            _getAudioData = GetComponent<GetAudioData>();
         }
 
         private void OnEnable()
         {
             _optionSO.OnChangeAnyVolumeEvent += CheckAllVolume;
+            
+            //PlayerPrefsからoptionSOの値が存在するかを確認し無かったら初期値を代入
+            if (!PlayerPrefs.HasKey("MasterVolume")) _optionSO.MasterVolume = _masterVolume;
+            else _optionSO.MasterVolume = PlayerPrefs.GetFloat("MasterVolume");
+            //残りの3つのデータも同じように処理する
+            if (!PlayerPrefs.HasKey("BGMVolume")) _optionSO.BGMVolume = _bgmVolume;
+            else _optionSO.BGMVolume = PlayerPrefs.GetFloat("BGMVolume");
+            if (!PlayerPrefs.HasKey("SEVolume")) _optionSO.SEVolume = _seVolume;
+            else _optionSO.SEVolume = PlayerPrefs.GetFloat("SEVolume");
+            if (!PlayerPrefs.HasKey("MouseSensivity")) _optionSO.MouseSensivity = _mouseSensivity;
+            else _optionSO.MouseSensivity = PlayerPrefs.GetFloat("MouseSensivity");
+            
+            _getAudioData.SetupFoolie();
         }
 
         private void OnDisable()
         {
             _optionSO.OnChangeAnyVolumeEvent -= CheckAllVolume;
+            
+            //optionSOの値をPlayerPrefsに保存
+            PlayerPrefs.SetFloat("MasterVolume", _optionSO.MasterVolume);
+            PlayerPrefs.SetFloat("BGMVolume", _optionSO.BGMVolume);
+            PlayerPrefs.SetFloat("SEVolume", _optionSO.SEVolume);
+            PlayerPrefs.SetFloat("MouseSensivity", _optionSO.MouseSensivity);
         }
 
         private void Start()

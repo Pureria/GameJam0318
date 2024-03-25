@@ -6,7 +6,8 @@ namespace ChangeGame.AudioSpectrum
 {
     public class AudioSpectrumMaterialSetter : MonoBehaviour
     {
-        private static AudioSpectrumMaterialSetter Instance;
+        public static AudioSpectrumMaterialSetter Instance;
+        public AudioSpectrumSO AudioSpectrumSO => Instance.audioSpectrumSO;
         
         [SerializeField] private AudioSpectrumSO audioSpectrumSO;
         [SerializeField] private GetAudioData audioData;
@@ -25,7 +26,7 @@ namespace ChangeGame.AudioSpectrum
             }
             else
             {
-                Destroy(this);
+                Destroy(this.gameObject);
             }
         }
         
@@ -41,6 +42,8 @@ namespace ChangeGame.AudioSpectrum
 
         private void SetData()
         {
+            if (!audioData._setupFoolie) return;
+            
             for(int i = 0; i < indices.Length; i++)
             {
                 float dat = audioData.spectrumData[Mathf.Clamp(indices[i], 0, res - 1)];
