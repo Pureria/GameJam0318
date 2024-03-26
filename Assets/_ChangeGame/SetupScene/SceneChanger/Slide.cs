@@ -10,7 +10,7 @@ namespace ChangeGame.Scene
     {
         //[SerializeField] private Animator _anim;
         [SerializeField] private GameObject _canvasObject;
-        [SerializeField] private Image _panel;
+        [SerializeField] private Animator _anim;
         
         protected override void Initialize()
         {
@@ -20,36 +20,30 @@ namespace ChangeGame.Scene
         public override bool InSCEffect(float scTime, SceneChangeEffect effect)
         {
             if (!base.InSCEffect(scTime, effect)) return false;
-            StartSC(scTime);
+            StartAnimation(scTime);
             return true;
         }
 
         public override bool OutSCEffect(float scTime, SceneChangeEffect effect)
         {
             if (!base.OutSCEffect(scTime, effect)) return false;
-            EndSC(scTime);
+            EndAnimation(scTime);
             return true;
         }
 
-        private void StartSC(float time)
+        private void StartAnimation(float time)
         {
             _canvasObject.SetActive(true);
-            //_panelのFillAmountをtime秒かけて0にする
-            _panel.fillAmount = 1;
-            _panel.DOFillAmount(0, time).onComplete += () =>
-            {
-                _canvasObject.SetActive(false);
-            };
-            
+            //アニメーションのスピードをtimeにしてアニメーターのstartトリガーを呼び出す
+            _anim.speed = time;
+            _anim.SetTrigger("start");
         }
 
-        private void EndSC(float time)
+        private void EndAnimation(float time)
         {
             _canvasObject.SetActive(true);
-            _panel.fillAmount = 0;
-            _panel.DOFillAmount(1, time).onComplete += () =>
-            {
-            };
+            _anim.speed = time;
+            _anim.SetTrigger("end");
         }
     }
 }
