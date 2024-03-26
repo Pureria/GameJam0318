@@ -13,6 +13,6 @@ public class DebugAudioSpectrum : MonoBehaviour
     private void Update()
     {
         _text.text = "SpectrumData : " + _audioSpectrumSO.SpectrumData[0];
-        _text2.text = "InstanceData : " + AudioSpectrumMaterialSetter.Instance.AudioSpectrumSO.SpectrumData[0];
+        _text2.text = "InstanceData : " + AudioSpectrum.Instance.audioSpectrumSO.SpectrumData[0];
     }
 }

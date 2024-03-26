@@ -3582,6 +3582,7 @@ MonoBehaviour:
   _minScale: 0.95
   _maxScale: 1
   _PlayOnAwake: 0
+  _anim: {fileID: 1231026799}
 --- !u!320 &1231026798
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -3609,7 +3610,7 @@ Animator:
   m_GameObject: {fileID: 1231026793}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6356d17a8efd23140bdbcc7701299b6b, type: 2}
+  m_Controller: {fileID: 9100000, guid: ebc5a25138b104a47ad7727d9b83e4ab, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

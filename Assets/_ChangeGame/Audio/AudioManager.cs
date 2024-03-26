@@ -37,8 +37,6 @@ public class AudioManager : MonoBehaviour
             {
                 Destroy(this.gameObject);
             }
-            
-            _getAudioData = GetComponent<GetAudioData>();
         }
 
         private void OnEnable()
@@ -55,8 +53,6 @@ public class AudioManager : MonoBehaviour
             else _optionSO.SEVolume = PlayerPrefs.GetFloat("SEVolume");
             if (!PlayerPrefs.HasKey("MouseSensivity")) _optionSO.MouseSensivity = _mouseSensivity;
             else _optionSO.MouseSensivity = PlayerPrefs.GetFloat("MouseSensivity");
-            
-            _getAudioData.SetupFoolie();
         }
 
         private void OnDisable()
