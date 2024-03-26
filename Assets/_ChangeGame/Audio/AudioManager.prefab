@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a8a69a9a02c37764d9313bd6a2f5c492, type: 3}
   _masterVolume: 0.8
   _bgmVolume: 0.5
-  _seVolume: 0.6
+  _seVolume: 0.7
   _mouseSensivity: 0
 --- !u!82 &6011274108233702639
 AudioSource:
