@@ -201,5 +201,6 @@ namespace ChangeGame.Scene
     public enum SceneChangeEffect
     {
         Fade,
+        Slide,
     }
 }

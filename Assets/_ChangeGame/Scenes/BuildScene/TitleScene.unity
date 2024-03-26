@@ -3758,8 +3758,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nextSceneIndex: 1
-  _sceneChangeEffect: 0
-  _fadeTime: 3
+  _sceneChangeEffect: 1
+  _fadeTime: 1.5
 --- !u!1 &1974100539
 GameObject:
   m_ObjectHideFlags: 0
