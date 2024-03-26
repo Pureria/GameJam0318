@@ -51,8 +51,10 @@ public class AudioManager : MonoBehaviour
             else _optionSO.BGMVolume = PlayerPrefs.GetFloat("BGMVolume");
             if (!PlayerPrefs.HasKey("SEVolume")) _optionSO.SEVolume = _seVolume;
             else _optionSO.SEVolume = PlayerPrefs.GetFloat("SEVolume");
-            if (!PlayerPrefs.HasKey("MouseSensivity")) _optionSO.MouseSensivity = _mouseSensivity;
-            else _optionSO.MouseSensivity = PlayerPrefs.GetFloat("MouseSensivity");
+            if (!PlayerPrefs.HasKey("MouseXSensivity")) _optionSO.MouseXSensivity = _mouseSensivity;
+            else _optionSO.MouseXSensivity = PlayerPrefs.GetFloat("MouseXSensivity");
+            if(!PlayerPrefs.HasKey("MouseYSensivity")) _optionSO.MouseYSensivity = _mouseSensivity;
+            else _optionSO.MouseYSensivity = PlayerPrefs.GetFloat("MouseYSensivity");
         }
 
         private void OnDisable()
@@ -63,7 +65,7 @@ public class AudioManager : MonoBehaviour
             PlayerPrefs.SetFloat("MasterVolume", _optionSO.MasterVolume);
             PlayerPrefs.SetFloat("BGMVolume", _optionSO.BGMVolume);
             PlayerPrefs.SetFloat("SEVolume", _optionSO.SEVolume);
-            PlayerPrefs.SetFloat("MouseSensivity", _optionSO.MouseSensivity);
+            PlayerPrefs.SetFloat("MouseSensivity", _optionSO.MouseXSensivity);
         }
 
         private void Start()

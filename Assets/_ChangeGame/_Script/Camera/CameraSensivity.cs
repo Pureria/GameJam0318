@@ -17,8 +17,8 @@ namespace ChangeGame.CameraImpulse
         private void Update()
         {
             //カメラの感度を_optionSoから取得
-            _freeLook.m_XAxis.m_MaxSpeed = _baseSensivityX * ((_optionSo.MouseSensivity + 1.2f) * 0.5f);
-            _freeLook.m_YAxis.m_MaxSpeed = _baseSensivityY * ((_optionSo.MouseSensivity + 1.2f) * 0.5f);
+            _freeLook.m_XAxis.m_MaxSpeed = _baseSensivityX * ((_optionSo.MouseXSensivity + 1.2f) * 0.5f);
+            _freeLook.m_YAxis.m_MaxSpeed = _baseSensivityY * ((_optionSo.MouseYSensivity + 1.2f) * 0.5f);
         }
     }
 }

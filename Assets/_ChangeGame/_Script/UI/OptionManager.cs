@@ -16,9 +16,14 @@ namespace ChangeGame.UI
         }
    
 
-        public void SetMouseSensivity(float value)
+        public void SetMouseXSensivity(float value)
         {
-            _optionSO.MouseSensivity = value;
+            _optionSO.MouseXSensivity = value;
+        }
+        
+        public void SetMouseYSensivity(float value)
+        {
+            _optionSO.MouseYSensivity = value;
         }
 
         public void SetMasterVolume(float value)

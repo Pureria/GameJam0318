@@ -1193,6 +1193,16 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1899251714}
+    - target: {fileID: 7946103121863510078, guid: 6b86910679b1d53428ee5c091cdbc279,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CheckPause
+      objectReference: {fileID: 0}
+    - target: {fileID: 7946103121863510078, guid: 6b86910679b1d53428ee5c091cdbc279,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ChangeGame.Manager.GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2652,12 +2662,12 @@ PrefabInstance:
     - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000033444643
+      value: -0.000000033444636
       objectReference: {fileID: 0}
     - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.00000001901982
+      value: 0.000000019019815
       objectReference: {fileID: 0}
     - target: {fileID: 476043699311931359, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
@@ -2820,7 +2830,7 @@ PrefabInstance:
     - target: {fileID: 3435771124959021259, guid: 07162b2afa8680e49aaa2e89fba1d684,
         type: 3}
       propertyPath: _fadeTime
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3435771124959021259, guid: 07162b2afa8680e49aaa2e89fba1d684,
         type: 3}
