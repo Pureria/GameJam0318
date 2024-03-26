@@ -2652,12 +2652,12 @@ PrefabInstance:
     - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000033444636
+      value: 0.000000033444643
       objectReference: {fileID: 0}
     - target: {fileID: 17488393528604483, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000019019815
+      value: -0.00000001901982
       objectReference: {fileID: 0}
     - target: {fileID: 476043699311931359, guid: 14de2d13486cfea4a990ea2b4b2206f4,
         type: 3}
@@ -2820,7 +2820,7 @@ PrefabInstance:
     - target: {fileID: 3435771124959021259, guid: 07162b2afa8680e49aaa2e89fba1d684,
         type: 3}
       propertyPath: _fadeTime
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3435771124959021259, guid: 07162b2afa8680e49aaa2e89fba1d684,
         type: 3}
@@ -2831,6 +2831,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _nextSceneIndex
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3435771124959021259, guid: 07162b2afa8680e49aaa2e89fba1d684,
+        type: 3}
+      propertyPath: _sceneChangeEffect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4606477045718579469, guid: 07162b2afa8680e49aaa2e89fba1d684,
         type: 3}

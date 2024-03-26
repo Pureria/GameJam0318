@@ -278,7 +278,6 @@ GameObject:
   - component: {fileID: 111609990}
   - component: {fileID: 111609989}
   - component: {fileID: 111609988}
-  - component: {fileID: 111609991}
   m_Layer: 0
   m_Name: Camvas
   m_TagString: Untagged
@@ -372,27 +371,6 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 15
   m_TargetDisplay: 0
---- !u!95 &111609991
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 111609986}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 521a1430891a36a49805e2d01e4ecd5e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &197144759
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 333710667}
   - component: {fileID: 333710666}
+  - component: {fileID: 333710668}
   m_Layer: 0
   m_Name: Slide
   m_TagString: Untagged
@@ -497,8 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cdc4a76640ef1e4686eabbb414acbdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _canvasObject: {fileID: 111609986}
-  _anim: {fileID: 111609991}
+  _anim: {fileID: 333710668}
 --- !u!4 &333710667
 Transform:
   m_ObjectHideFlags: 0
@@ -515,6 +493,27 @@ Transform:
   - {fileID: 111609987}
   m_Father: {fileID: 1526026170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &333710668
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333710665}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 521a1430891a36a49805e2d01e4ecd5e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &356926390
 GameObject:
   m_ObjectHideFlags: 0
@@ -836,8 +835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61797e3c27182ea43ad7a32924837ea9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startSceneChangeEffect: 0
-  _startSceneChangeTime: 2
+  _startSceneChangeEffect: 1
+  _startSceneChangeTime: 3
   _sceneChangers:
   - {fileID: 356926391}
   - {fileID: 333710666}
@@ -1065,7 +1064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.94729495, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.67147636, b: 0.7075472, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

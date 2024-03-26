@@ -52,7 +52,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Block
+    path: Camvas/Block
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -87,11 +87,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -1757
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Block (1)
+    path: Camvas/Block (1)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -130,7 +139,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Block (2)
+    path: Camvas/Block (2)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -148,82 +157,55 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.3
-        value: 0.774
-        inSlope: -1.6400001
-        outSlope: -1.6400001
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 0.33333334
-        value: 0.733
-        inSlope: -0.9942859
-        outSlope: -0.9942859
+        value: 0.735
+        inSlope: -0.624
+        outSlope: -0.624
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.41666666
-        value: 0.658
-        inSlope: -0.78000003
-        outSlope: -0.78000003
+        value: 0.67
+        inSlope: -0.894
+        outSlope: -0.894
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.603
-        inSlope: -0.9840001
-        outSlope: -0.9840001
+        value: 0.586
+        inSlope: -0.9540003
+        outSlope: -0.9540003
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5833333
-        value: 0.494
-        inSlope: -1.2119998
-        outSlope: -1.2119998
+        value: 0.511
+        inSlope: -1.086
+        outSlope: -1.086
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: 0.401
-        inSlope: -1.0425
-        outSlope: -1.0425
+        value: 0.405
+        inSlope: -1.1219997
+        outSlope: -1.1219997
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.71666664
-        value: 0.355
-        inSlope: -0.8340002
-        outSlope: -0.8340002
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.8333333
-        value: 0.262
-        inSlope: -1.252941
-        outSlope: -1.252941
+        time: 0.75
+        value: 0.324
+        inSlope: -0.97200006
+        outSlope: -0.97200006
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -241,9 +223,39 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FillAmount
-    path: Panel
+    path: Camvas/Panel
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Camvas
+    classID: 1
+    script: {fileID: 0}
     flags: 0
   m_PPtrCurves: []
   m_SampleRate: 60
@@ -254,7 +266,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1121630246
+      path: 3104918851
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -263,7 +275,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2664868551
+      path: 591411676
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -272,7 +284,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 3053189380
+      path: 141388319
       attribute: 1460864421
       script: {fileID: 0}
       typeID: 224
@@ -281,10 +293,19 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1668086795
+      path: 2561083758
       attribute: 3063383489
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
+      customType: 0
+      isPPtrCurve: 0
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    - serializedVersion: 2
+      path: 2961622720
+      attribute: 2086281974
+      script: {fileID: 0}
+      typeID: 1
       customType: 0
       isPPtrCurve: 0
       isIntCurve: 0
@@ -300,7 +321,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -346,7 +367,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Block
+    path: Camvas/Block
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -381,11 +402,20 @@ AnimationClip:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: -1757
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Block (1)
+    path: Camvas/Block (1)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -424,7 +454,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.x
-    path: Block (2)
+    path: Camvas/Block (2)
     classID: 224
     script: {fileID: 0}
     flags: 0
@@ -442,82 +472,55 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.23333333
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.3
-        value: 0.774
-        inSlope: -1.6400001
-        outSlope: -1.6400001
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
         time: 0.33333334
-        value: 0.733
-        inSlope: -0.9942859
-        outSlope: -0.9942859
+        value: 0.735
+        inSlope: -0.624
+        outSlope: -0.624
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.41666666
-        value: 0.658
-        inSlope: -0.78000003
-        outSlope: -0.78000003
+        value: 0.67
+        inSlope: -0.894
+        outSlope: -0.894
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.603
-        inSlope: -0.9840001
-        outSlope: -0.9840001
+        value: 0.586
+        inSlope: -0.9540003
+        outSlope: -0.9540003
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5833333
-        value: 0.494
-        inSlope: -1.2119998
-        outSlope: -1.2119998
+        value: 0.511
+        inSlope: -1.086
+        outSlope: -1.086
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: 0.401
-        inSlope: -1.0425
-        outSlope: -1.0425
+        value: 0.405
+        inSlope: -1.1219997
+        outSlope: -1.1219997
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.71666664
-        value: 0.355
-        inSlope: -0.8340002
-        outSlope: -0.8340002
-        tangentMode: 136
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.8333333
-        value: 0.262
-        inSlope: -1.252941
-        outSlope: -1.252941
+        time: 0.75
+        value: 0.324
+        inSlope: -0.97200006
+        outSlope: -0.97200006
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -535,9 +538,39 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_FillAmount
-    path: Panel
+    path: Camvas/Panel
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+    flags: 0
+  - serializedVersion: 2
+    curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Camvas
+    classID: 1
+    script: {fileID: 0}
     flags: 0
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0

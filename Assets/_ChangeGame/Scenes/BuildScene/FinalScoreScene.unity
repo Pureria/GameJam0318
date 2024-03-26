@@ -1834,7 +1834,7 @@ MonoBehaviour:
   _eliminatText: {fileID: 794923871}
   _scoreText: {fileID: 1485055043}
   _nextSceneIndex: 0
-  _sceneChangeEffect: 0
+  _sceneChangeEffect: 1
   _fadeTime: 2
 --- !u!1 &1485055041
 GameObject:
