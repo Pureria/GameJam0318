@@ -175,7 +175,7 @@ MonoBehaviour:
   _cameraImpulseSO: {fileID: 11400000, guid: 58de44a980674fe449cc4df00f18a097, type: 2}
   _impulseTime: 0.1
   _playableDirector: {fileID: 1188840547725183781}
-  _damageAmount: 60
+  _damageAmount: 100
   _checkRadius: 4.41
   _checkTransform: {fileID: 3403986398521422482}
   _isNowAttack: 0
