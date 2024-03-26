@@ -87,7 +87,8 @@ namespace ChangeGame.Player
         private void Start()
         {
             _stateMachine.Initialize(IdleState);
-            _statesComp.Initialize(_infoSO.MaxHealth);
+            StatesComp.Initialize(_infoSO.MaxHealth);
+            _interSO.CurrentHealth = StatesComp.CurrentHealth;
             
             foreach (Transform prop in _superPlayerProps)
             {
