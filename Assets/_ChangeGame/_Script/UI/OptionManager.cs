@@ -13,33 +13,35 @@ namespace ChangeGame.UI
 
         private void Start()
         {
-            _optionSO.MouseSensivity = 0f;
-            _optionSO.MasterVolume = 0.5f;
-            _optionSO.BGMVolume = 0.5f;
-            _optionSO.SEVolume = 0.5f;
         }
    
 
-        public void SetMouseSensivity(float value)
+        public void SetMouseXSensivity(float value)
         {
-            _optionSO.MouseSensivity = Mathf.Clamp(value, -1f, 1f);
+            _optionSO.MouseXSensivity = value;
+        }
+        
+        public void SetMouseYSensivity(float value)
+        {
+            _optionSO.MouseYSensivity = value;
         }
 
         public void SetMasterVolume(float value)
         {
-            _optionSO.MasterVolume = Mathf.Clamp(value, 0f, 0.5f);
+            Debug.Log("MasterVolume : " + value);
+            _optionSO.MasterVolume = value;
             _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
 
         public void SetBGMVolume(float value)
         {
-            _optionSO.BGMVolume = Mathf.Clamp(value, 0.8f, 1f);
+            _optionSO.BGMVolume = value;
             _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
         
         public void SetSEVolume(float value)
         {
-            _optionSO.SEVolume = Mathf.Clamp01(value);
+            _optionSO.SEVolume = value;
             _optionSO.OnChangeAnyVolumeEvent?.Invoke();
         }
 

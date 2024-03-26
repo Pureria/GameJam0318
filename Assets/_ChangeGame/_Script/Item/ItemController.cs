@@ -7,8 +7,14 @@ namespace ChangeGame.Item
     public class ItemController : MonoBehaviour
     {
         public Action OnPickUpEvent;
-        [SerializeField] private AudioSource _seSource;
+        //[SerializeField] private AudioSource _seSource;
         [SerializeField] private AudioClip _pickUpSE;
+        private AudioSource _seSource;
+        
+        private void Start()
+        {
+            _seSource = transform.root.GetComponent<AudioSource>();
+        }
         
         private void OnTriggerEnter(Collider other)
         {

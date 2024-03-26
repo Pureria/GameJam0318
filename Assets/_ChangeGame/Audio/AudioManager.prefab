@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 3166495534212486596}
   - component: {fileID: 3092239411275658053}
   - component: {fileID: 6011274108233702639}
-  - component: {fileID: 59832504706629634}
-  - component: {fileID: 2672567494516742799}
+  - component: {fileID: 9140896765358025015}
   m_Layer: 0
   m_Name: AudioManager
   m_TagString: Untagged
@@ -54,6 +53,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5a87308491d4a844f8d7f0025e0a6a03, type: 3}
   - {fileID: 8300000, guid: a0ff520630489844ab2d27a263778f2a, type: 3}
   - {fileID: 8300000, guid: a8a69a9a02c37764d9313bd6a2f5c492, type: 3}
+  _masterVolume: 0.8
+  _bgmVolume: 0.5
+  _seVolume: 0.6
+  _mouseSensivity: 0
 --- !u!82 &6011274108233702639
 AudioSource:
   m_ObjectHideFlags: 0
@@ -151,7 +154,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &59832504706629634
+--- !u!114 &9140896765358025015
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,27 +163,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 4560414841434567503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3eb9262455a04346813d7e8b97b12d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FFT_res: 512
-  source: {fileID: 6011274108233702639}
-  dataOffset: 0
-  FFT_wf: 1
-  spectrumData: []
---- !u!114 &2672567494516742799
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4560414841434567503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693e2dd8aeda7be44bc43b31c1bbdf92, type: 3}
+  m_Script: {fileID: 11500000, guid: e08b84cccbafbcb4099f67a9310c31c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioSpectrumSO: {fileID: 11400000, guid: 53419194a4619634195bdb8d2577435c, type: 2}
-  audioData: {fileID: 59832504706629634}
-  indices: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  amp: 10
+  _audioSource: {fileID: 6011274108233702639}

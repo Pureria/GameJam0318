@@ -1,22 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
+using ChangeGame.Scene;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class TitleManager : MonoBehaviour
 {
     private bool _bStart;   //GameScene‚É‘JˆÚ‚Å‚«‚é‚©‚Ç‚¤‚©
 
+    /*
     [SerializeField]
     private Fade _fade;
     [SerializeField]
     private string _nextSceneName = "TitleTransitionTestScene";  //‘JˆÚŒã‚ÌƒV[ƒ“–¼
+    */
+    
+    [SerializeField] private int _nextSceneIndex;  //‘JˆÚŒã‚ÌƒV[ƒ“”Ô†
+    [SerializeField] private SceneChangeEffect _sceneChangeEffect = SceneChangeEffect.Fade;
+    [SerializeField] private float _fadeTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        _bStart = false;
-        _fade.FadeStart(_TitleStart);
+        _bStart = true;
     }
 
     // Update is called once per frame
@@ -38,7 +44,7 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     private void _ChangeScene()
     {
-        SceneManager.LoadScene(_nextSceneName);
+        //SceneManager.LoadScene(_nextSceneName);
     }
 
     /// <summary>
@@ -46,11 +52,15 @@ public class TitleManager : MonoBehaviour
     /// </summary>
     public void OnButtonClick()
     {
+        /*
         if (_bStart)
         {
             _fade.FadeStart(_ChangeScene);
             _bStart = false;
         }
+        */
+
+        SceneManager.ChangeSceneWait(_nextSceneIndex, _sceneChangeEffect, _fadeTime);
     }
 
 }

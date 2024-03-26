@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace ChangeGame.AudioSpectrum
         [HideInInspector] public float[] spectrumData = null;
         private float[] data;
 
+        public bool _setupFoolie { get; private set; } = false;
+
         private void Awake()
         {
             if (instance == null)
@@ -38,11 +41,12 @@ namespace ChangeGame.AudioSpectrum
         
         private void OnEnable()
         {
-            //準備
-            var clip = source.clip;
-            data = new float[clip.channels * clip.samples];
-            source.clip.GetData(data, dataOffset);
-            spectrumData = new float[(int)FFT_res];
+            
+        }
+
+        private void OnDisable()
+        {
+            _setupFoolie = false;
         }
 
         public void FixedUpdate()
@@ -52,11 +56,23 @@ namespace ChangeGame.AudioSpectrum
 
         private void Refresh()
         {
+            if (!_setupFoolie) return;
+            
             bool cond = source.isPlaying && source.timeSamples < data.Length;
 
             //周波数成分取得
             if (cond) source.GetSpectrumData(spectrumData, 0, FFT_wf);
             else spectrumData = Enumerable.Repeat<float>(0, (int)FFT_res).ToArray();
+        }
+
+        public void SetupFoolie()
+        {
+            //準備
+            var clip = source.clip;
+            data = new float[clip.channels * clip.samples];
+            source.clip.GetData(data, dataOffset);
+            spectrumData = new float[(int)FFT_res];
+            _setupFoolie = true;
         }
     }
 }

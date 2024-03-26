@@ -50,19 +50,24 @@ namespace ChangeGame.Enemy
             }
 
             //TODO::ƒQ[ƒ€ŠJn‚ÌŠÔ‚ğ“ü‚ê‚é‚æ‚¤‚É
-            _nextSpawnTime = Time.time + _spawnInterval;
+            float time = 0;
+            if (_gameManagerSO.OnGetSurviveTimeEvent != null) time = _gameManagerSO.OnGetSurviveTimeEvent();
+            _nextSpawnTime = time + _spawnInterval;
         }
 
         private void Update()
         {
-            if (_nextSpawnTime <= Time.time)
+            if (_gameManagerSO.OnGetSurviveTimeEvent == null) return;
+            if (_nextSpawnTime <= _gameManagerSO.OnGetSurviveTimeEvent())
             {
                 int spawnCount = (int)(_scoreSO.EliminateCount / _addCount) + 1;
                 for (int i = 0; i < spawnCount; i++)
                 {
                     SpawnEnemy();
                 }
-                _nextSpawnTime = Time.time + _spawnInterval;
+                float time = 0;
+                if (_gameManagerSO.OnGetSurviveTimeEvent != null) time = _gameManagerSO.OnGetSurviveTimeEvent();
+                _nextSpawnTime = time + _spawnInterval;
             }
         }
 
