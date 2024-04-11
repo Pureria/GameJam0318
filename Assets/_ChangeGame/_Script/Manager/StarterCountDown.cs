@@ -10,6 +10,9 @@ namespace ChangeGame.Manager
     public class StarterCountDown : MonoBehaviour
     {
         [SerializeField] private Animator _anim;
+        [SerializeField] private AudioSource _audioSource;
+        [SerializeField] private AudioClip _countDownSE;
+        [SerializeField] private AudioClip _startSE;
 
         public async UniTask StartCountDown(Action endEvent, CancellationToken token)
         {
@@ -21,6 +24,16 @@ namespace ChangeGame.Manager
             
             Debug.Log("スタートカウントダウン終了");
             endEvent?.Invoke();
+        }
+        
+        public void PlayCountDownSE()
+        {
+            _audioSource.PlayOneShot(_countDownSE);
+        }
+        
+        public void PlayStartSE()
+        {
+            _audioSource.PlayOneShot(_startSE);
         }
     }
 }

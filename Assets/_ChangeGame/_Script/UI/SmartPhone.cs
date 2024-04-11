@@ -6,7 +6,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
-using UnityEngine.Serialization;
 
 namespace ChangeGame.UI.SmartPhone
 {
