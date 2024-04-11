@@ -27,6 +27,7 @@ namespace ChangeGame.Player
         [SerializeField] private InputSO _inputSO;
         [SerializeField] private GameObject _changeSuperEffect;
         [SerializeField] private GameObject _changeNormalEffect;
+        [SerializeField] private GameObject _superEffectLoop;
         [SerializeField] private List<Transform> _superPlayerProps = new List<Transform>();
         [SerializeField] private Vector3 _magicSpawnPoint;
         
@@ -183,8 +184,16 @@ namespace ChangeGame.Player
 
         private void ChangeModePlaer()
         {
-            if (_helper.IsSuperPlayer) _changeSuperEffect.SetActive(true);
-            else _changeNormalEffect.SetActive(true);
+            if (_helper.IsSuperPlayer)
+            {
+                _changeSuperEffect.SetActive(true);
+                _superEffectLoop.SetActive(true);
+            }
+            else
+            {
+                _changeNormalEffect.SetActive(true);
+                _superEffectLoop.SetActive(false);
+            }
         }
 
         private void GameStart()

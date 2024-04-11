@@ -37,6 +37,7 @@ namespace ChangeGame.Manager
             _isGameEnd = false;
             _isGamePause = false;
             _isStartCountDown = false;
+            _startCountDown.gameObject.SetActive(false);
         }
 
         private void Update()
@@ -46,6 +47,7 @@ namespace ChangeGame.Manager
                 if (!SceneManager._instance.LoadedScene && !_isGameEnd && !_isStartCountDown)
                 {
                     //GameStart();
+                    _startCountDown.gameObject.SetActive(true);
                     _isStartCountDown = true;
                     _startCountDown.StartCountDown(GameStart, _startCountDown.GetCancellationTokenOnDestroy());
                 }
@@ -110,6 +112,7 @@ namespace ChangeGame.Manager
             _gameTime = 0;
             _isGameEnd = false;
             _isGamePause = false;
+            _startCountDown.gameObject.SetActive(false);
         }
 
         private void GameEnd()
