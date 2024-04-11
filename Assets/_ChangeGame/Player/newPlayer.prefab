@@ -5122,7 +5122,7 @@ MonoBehaviour:
   _inputSO: {fileID: 11400000, guid: ebef1b6d3a1e41f42a1a85db5bb24634, type: 2}
   _changeSuperEffect: {fileID: 4208014799135617624}
   _changeNormalEffect: {fileID: 7860231040521509795}
-  _superEffectLoop: {fileID: 3936473297709980776}
+  _superEffectLoop: {fileID: 1963925649677896350}
   _superPlayerProps: []
   _magicSpawnPoint: {x: 0, y: 1, z: 1.5}
   _anim: {fileID: 6291382984211679381}
@@ -5644,6 +5644,7 @@ Transform:
   - {fileID: 2557177297870844503}
   - {fileID: 3414586897945898921}
   - {fileID: 2274800385030747302}
+  - {fileID: 8734111043959424003}
   m_Father: {fileID: 3243175143559038941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6302661859474655576
@@ -11032,6 +11033,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b818f383a93ecf4495b433aaef69851, type: 3}
+--- !u!137 &2694571151611761761 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7577154477895069460, guid: 1b818f383a93ecf4495b433aaef69851,
+    type: 3}
+  m_PrefabInstance: {fileID: 5495095188791999349}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5238418091479052961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 356037852174289364, guid: 1b818f383a93ecf4495b433aaef69851,
@@ -11147,9 +11154,93 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6665827151789244964}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3936473297709980776 stripped
+--- !u!1001 &8624776807272060069
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6925601507326919765}
+    m_Modifications:
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.0127053
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.031153202
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.040521383
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1737185147817583246, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: ShapeModule.m_SkinnedMeshRenderer
+      value: 
+      objectReference: {fileID: 2694571151611761761}
+    - target: {fileID: 7849808469211143739, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_Name
+      value: SuperModeLoopEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7849808469211143739, guid: d9644c40e2ef2d74899610fc5d8d6034,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9644c40e2ef2d74899610fc5d8d6034, type: 3}
+--- !u!1 &1963925649677896350 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 7647375919561907788, guid: 89a7cb58a71df8a4e8ea913705920386,
+  m_CorrespondingSourceObject: {fileID: 7849808469211143739, guid: d9644c40e2ef2d74899610fc5d8d6034,
     type: 3}
-  m_PrefabInstance: {fileID: 6665827151789244964}
+  m_PrefabInstance: {fileID: 8624776807272060069}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8734111043959424003 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1046127552768118950, guid: d9644c40e2ef2d74899610fc5d8d6034,
+    type: 3}
+  m_PrefabInstance: {fileID: 8624776807272060069}
   m_PrefabAsset: {fileID: 0}
