@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using ChangeGame.Scene;
 using ChangeGame.UI;
+using Cysharp.Threading.Tasks;
 
 namespace ChangeGame.Manager
 {
@@ -13,6 +14,7 @@ namespace ChangeGame.Manager
         [SerializeField] private GameManagerSO _gameManagerSO;
         [SerializeField] private ScoreSO _scoreSO;
         [SerializeField] private OptionPopup _optionPopup;
+        [SerializeField] private StarterCountDown _startCountDown;
         
         [Header("Scene Change Info")]
         [SerializeField] private int _nextSceneIndex;  //遷移後のシーン番号
@@ -25,6 +27,7 @@ namespace ChangeGame.Manager
         private bool _isGame;
         private bool _isGameEnd;
         private bool _isGamePause;
+        private bool _isStartCountDown;
         private Transform _playerTransform;
         
         private void Start()
@@ -33,15 +36,18 @@ namespace ChangeGame.Manager
             _isGame = false;
             _isGameEnd = false;
             _isGamePause = false;
+            _isStartCountDown = false;
         }
 
         private void Update()
         {
             if (!_isGame)
             {
-                if (!SceneManager._instance.LoadedScene && !_isGameEnd)
+                if (!SceneManager._instance.LoadedScene && !_isGameEnd && !_isStartCountDown)
                 {
-                    GameStart();
+                    //GameStart();
+                    _isStartCountDown = true;
+                    _startCountDown.StartCountDown(GameStart, _startCountDown.GetCancellationTokenOnDestroy());
                 }
                 return;
             }

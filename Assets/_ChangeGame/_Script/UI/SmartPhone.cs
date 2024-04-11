@@ -20,7 +20,7 @@ namespace ChangeGame.UI.SmartPhone
         private void Start()
         {
             _nowImageIndex = 0;
-            WaitChangeImage(this.GetCancellationTokenOnDestroy());
+            WaitChangeImage(this.GetCancellationTokenOnDestroy()).Forget();
         }
 
         private async UniTask WaitChangeImage(CancellationToken token)
